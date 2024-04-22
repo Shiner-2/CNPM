@@ -36,5 +36,5 @@ App học tiếng anh dành cho trẻ em thông qua những trò chơi nhỏ v�
 # Resource sử dụng 
 Dự án được code bằng Java và sử dụng JavaFx cho frontend
 
-#Thông tin liên hệ
+# Thông tin liên hệ
 Mail: 23021513@vnu.edu.vn
