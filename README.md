@@ -1,4 +1,4 @@
-# Bài tập lớn Công nghệ phần mềm
+# English learning App using Games
 
 # Thành viên nhóm 
 
@@ -29,3 +29,9 @@
 		</tr>
 	</table>
 </center>
+
+# Mô tả dự án
+App học tiếng anh dành cho trẻ em thông qua những trò chơi nhỏ về từ vựng như scrabble, hangman, wordle, ... Có tích hợp từ điển và texttospeech api.
+
+# Resource sử dụng 
+Dự án được code bằng Java và sử dụng JavaFx cho frontend
