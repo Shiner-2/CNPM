@@ -1,5 +1,8 @@
 # English learning App using Games
 
+![image](https://github.com/Shiner-2/CNPM/assets/97158120/a65e09f2-32fe-4ae6-a435-eff63397295b)
+
+
 # Thành viên nhóm 
 
 <center>
