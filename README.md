@@ -39,5 +39,11 @@ App học tiếng anh dành cho trẻ em thông qua những trò chơi nhỏ v�
 # Resource sử dụng 
 Dự án được code bằng Java và sử dụng JavaFx cho frontend
 
+# Yêu cầu hệ thống
+
+Sử dụng java jdk 21 trở lên [Tải phiên bản chính thức ở đây](https://www.oracle.com/java/technologies/downloads/)
+
+Clone dự án về và chạy file App.java để sử dụng phần mềm
+
 # Thông tin liên hệ
 Mail: 23021513@vnu.edu.vn
