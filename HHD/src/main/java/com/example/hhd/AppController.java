@@ -19,7 +19,7 @@ public class AppController {
 
     public void LoadGames(ActionEvent event) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        fxmlLoader = new FXMLLoader(App.class.getResource("Games.fxml"));
+        fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
         scene = new Scene(fxmlLoader.load());
         stage.setTitle("Games");
         stage.setScene(scene);
@@ -28,7 +28,7 @@ public class AppController {
 
     public void LoadDictionary(ActionEvent event) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        fxmlLoader = new FXMLLoader(App.class.getResource("Dictionary.fxml"));
+        fxmlLoader = new FXMLLoader(App.class.getResource("Dictionary/Dictionary.fxml"));
         scene = new Scene(fxmlLoader.load());
         stage.setTitle("Dictionary");
         stage.setScene(scene);

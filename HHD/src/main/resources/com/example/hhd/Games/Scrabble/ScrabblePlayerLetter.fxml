@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.ImageView?>
+
+
+<fx:root fx:id="ScrabblePlayerLetterLetter" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" type="ImageView" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</fx:root>

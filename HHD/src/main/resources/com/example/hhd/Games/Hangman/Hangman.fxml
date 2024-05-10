@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e8e279;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.Games.Hangman.HangmanController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0">
+         <children>
+            <Line endX="100.0" layoutX="-69.0" layoutY="335.0" startX="100.0" startY="-274.3999938964844" />
+            <Line endX="100.0" layoutX="101.0" layoutY="336.0" startX="-100.0" />
+            <Line endX="30.5999755859375" endY="-1.1444091796875E-5" layoutX="131.0" layoutY="60.0" startX="-100.0" />
+            <Line endX="-100.0" endY="49.99998474121094" layoutX="262.0" layoutY="60.0" startX="-100.0" />
+            <Circle fx:id="HangmanFail1" fill="WHITE" layoutX="163.0" layoutY="130.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line fx:id="HangmanFail4" endX="-100.0" endY="67.99998474121094" layoutX="263.0" layoutY="151.0" startX="-100.0" />
+            <Line fx:id="HangmanFail2" endX="30.5999755859375" endY="-59.59999084472656" layoutX="131.0" layoutY="210.0" startX="1.79998779296875" startY="-18.400009155273438" />
+            <Line fx:id="HangmanFail3" endX="87.79998779296875" endY="-4.0000152587890625" layoutX="101.0" layoutY="191.0" startX="62.79998779296875" startY="-40.59999084472656" />
+            <Line fx:id="HangmanFail5" endX="-48.5999755859375" endY="-57.59999084472656" layoutX="211.0" layoutY="278.0" startX="-88.20001220703125" startY="-15.0" />
+            <Line fx:id="HangmanFail6" endX="-52.5" endY="-56.50001525878906" layoutX="216.0" layoutY="276.0" startX="-18.0" startY="-12.199981689453125" />
+            <Label fx:id="HangmanFail" layoutX="150.0" layoutY="120.0" prefHeight="19.0" prefWidth="26.0" text="X X" />
+            <Label alignment="CENTER" layoutX="43.0" layoutY="348.0" text="HANGMAN GAME" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="6.0" layoutY="9.0" onMouseClicked="#LoadGames">
+               <image>
+                  <Image url="@../../../../../img/images-removebg-preview-removebg-preview.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutX="214.0" prefHeight="400.0" prefWidth="380.0">
+         <children>
+            <HBox fx:id="HangmanHiddenWordContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+            <HBox fx:id="HangmanFailCount" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="HangmanFailCountLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="CENTER" textFill="#3f3cbd">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
+            <VBox fx:id="HangmanKeyBoardContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox fx:id="HangmanKeyBoardContainer1" alignment="CENTER" />
+                  <HBox fx:id="HangmanKeyBoardContainer2" alignment="CENTER" />
+                  <HBox fx:id="HangmanKeyBoardContainer3" alignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

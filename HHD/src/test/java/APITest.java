@@ -1,4 +1,4 @@
-import com.example.hhd.APITranslator;
+import com.example.hhd.Translator.APITranslator;
 
 import java.io.IOException;
 

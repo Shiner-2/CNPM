@@ -1,6 +1,6 @@
-import com.example.hhd.Dictionary;
-import com.example.hhd.TrieDictionary;
-import com.example.hhd.Word;
+import com.example.hhd.Algo.Dictionary;
+import com.example.hhd.Algo.TrieDictionary;
+import com.example.hhd.Algo.Word;
 
 import java.io.File;
 import java.io.IOException;
