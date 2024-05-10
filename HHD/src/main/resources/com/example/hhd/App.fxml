@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../CSS/App.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.AppController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" layoutX="29.0" opacity="0.77" strokeType="INSIDE" width="130.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9578947424888611" green="0.07805068045854568" blue="0.07805068045854568" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.01746588759124279" green="0.06537231802940369" blue="0.3368421196937561" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9368420839309692" green="0.18736842274665833" blue="0.7619649171829224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.15590643882751465" green="0.4526315927505493" blue="0.2103060483932495" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Button fx:id="DictionaryButton" layoutX="34.0" layoutY="75.0" mnemonicParsing="false" onAction="#LoadDictionary" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #3766a1; -fx-background-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-radius: 20;" text="Dictionary" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="TranslateButton" layoutX="34.0" layoutY="225.0" mnemonicParsing="false" onAction="#LoadTranslator" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 20; -fx-background-color: #3766a1; -fx-border-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e);" text="Translate" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="GamesButton" layoutX="34.0" layoutY="149.0" mnemonicParsing="false" onAction="#LoadGames" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #3766a1; -fx-background-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-radius: 20;" text="Games" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="About" layoutX="34.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#about" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 20; -fx-background-color: #3766a1; -fx-border-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e);" text="About" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="70.0" fitWidth="250.0" layoutX="214.0" layoutY="40.0">
+         <image>
+            <Image url="@../../../img/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

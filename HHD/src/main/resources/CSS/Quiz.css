@@ -1,0 +1,9 @@
+.button {
+    -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.button:disabled, .button:disabled > * {
+  -fx-opacity: 1.0 ;
+}
