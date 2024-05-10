@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.TranslatorController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.Translator.TranslatorController">
    <children>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="25.0" onMouseClicked="#LoadApp">
          <image>

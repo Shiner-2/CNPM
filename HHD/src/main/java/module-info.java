@@ -8,6 +8,24 @@ module com.example.hhd {
 
     opens com.example.hhd to javafx.fxml;
     exports com.example.hhd;
+    exports com.example.hhd.Games.Wordle;
+    opens com.example.hhd.Games.Wordle to javafx.fxml;
+    exports com.example.hhd.Games.Hangman;
+    opens com.example.hhd.Games.Hangman to javafx.fxml;
+    exports com.example.hhd.Games;
+    opens com.example.hhd.Games to javafx.fxml;
+    exports com.example.hhd.Games.Quiz;
+    opens com.example.hhd.Games.Quiz to javafx.fxml;
+    exports com.example.hhd.Games.Scrabble;
+    opens com.example.hhd.Games.Scrabble to javafx.fxml;
+    exports com.example.hhd.Dictionary;
+    opens com.example.hhd.Dictionary to javafx.fxml;
+    exports com.example.hhd.TTS;
+    opens com.example.hhd.TTS to javafx.fxml;
+    exports com.example.hhd.Translator;
+    opens com.example.hhd.Translator to javafx.fxml;
+    exports com.example.hhd.Algo;
+    opens com.example.hhd.Algo to javafx.fxml;
     requires javafx.web;
     requires jlayer;
 }
