@@ -23,12 +23,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class DictionaryController implements Initializable {
+public class DictionaryController{
 
     @FXML
     private Button AddWordBtn;
 
-    Dictionary data;
+    Dictionary data = AppController.data;
 
     @FXML
     private TextField userInputWord;
@@ -41,14 +41,6 @@ public class DictionaryController implements Initializable {
 
     private Word currentWord;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            data = new TrieDictionary();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     private void onUserTyping(){
@@ -201,14 +193,14 @@ public class DictionaryController implements Initializable {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("Dictionary/AddWordView.fxml"));
         newWindow.setScene(new Scene(loader.load()));
         newWindow.show();
-        newWindow.setOnCloseRequest(windowEvent -> {
-            //System.out.println("close");
-            try {
-                data = new TrieDictionary();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+//        newWindow.setOnCloseRequest(windowEvent -> {
+//            //System.out.println("close");
+//            try {
+//                data = new TrieDictionary();
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
     }
 
     @FXML
@@ -239,14 +231,14 @@ public class DictionaryController implements Initializable {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("Dictionary/EditWordView.fxml"));
             newWindow.setScene(new Scene(loader.load()));
             newWindow.show();
-            newWindow.setOnCloseRequest(windowEvent -> {
-                //System.out.println("close");
-                try {
-                    data = new TrieDictionary();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+//            newWindow.setOnCloseRequest(windowEvent -> {
+//                //System.out.println("close");
+//                try {
+//                    data = new TrieDictionary();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
             wordDefinition.getChildren().clear();
             recommendWord.getItems().clear();
         }

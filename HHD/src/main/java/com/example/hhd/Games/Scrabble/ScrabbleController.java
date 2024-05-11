@@ -3,6 +3,7 @@ package com.example.hhd.Games.Scrabble;
 import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
+import com.example.hhd.AppController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public class ScrabbleController {
     private String curCharDrag;
     ArrayList<ArrayList<ScrabbleBoardWordController>> board = new ArrayList<>();
     ArrayList<ArrayList<Integer>> powerup = new ArrayList<>();
-    private Dictionary data = new TrieDictionary();
+    private Dictionary data = AppController.data;
     private ArrayList<ScrabblePlayerLetterController> player = new ArrayList<>();
     //private HashMap<String,Integer> randomBag = new HashMap<>();
     private ArrayList<Integer> randomBag = new ArrayList<>();

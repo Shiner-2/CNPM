@@ -3,6 +3,7 @@ package com.example.hhd.Games.Hangman;
 import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
+import com.example.hhd.AppController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,7 +58,7 @@ public class HangmanController implements Initializable {
 
     private String HiddenWord = "NULL";
     private List<String> IdList = new ArrayList<>();
-    private Dictionary data = new TrieDictionary();
+    private Dictionary data = AppController.data;
 
     public HangmanController() throws IOException {
         HiddenWord = data.randomWord(10).getWord();

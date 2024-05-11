@@ -25,9 +25,8 @@ public class WordleController{
     private TextField WordleInput;
     private Integer sz = 5;
     private String HiddenWord = "DOGGY";
-    //private TrieDictionary trie = new TrieDictionary();
     private Integer GuessCount = 0;
-    private Dictionary data = new TrieDictionary();
+    private Dictionary data = AppController.data;
 
     public WordleController() throws IOException {
         HiddenWord = data.randomWord(5).getWord().toLowerCase();

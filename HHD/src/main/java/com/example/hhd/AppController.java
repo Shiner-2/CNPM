@@ -1,5 +1,7 @@
 package com.example.hhd;
 
+import com.example.hhd.Algo.Dictionary;
+import com.example.hhd.Algo.TrieDictionary;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,6 +18,11 @@ public class AppController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+    public static Dictionary data;
+
+    public AppController() throws IOException {
+        data = new TrieDictionary();
+    }
 
     public void LoadGames(ActionEvent event) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -51,4 +58,6 @@ public class AppController {
         info.setContentText("This project is made for education purpose, by HHD group in UET university");
         info.show();
     }
+
+
 }

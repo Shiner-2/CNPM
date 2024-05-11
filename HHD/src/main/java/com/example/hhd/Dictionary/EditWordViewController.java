@@ -4,6 +4,7 @@ package com.example.hhd.Dictionary;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.Algo.Word;
+import com.example.hhd.AppController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +24,7 @@ public class EditWordViewController implements Initializable {
     @FXML
     private TextArea UserDefinationEnteredEdit;
 
-    Dictionary data = new TrieDictionary();
+    Dictionary data = AppController.data;
     String word = "";
     Word ww = new Word("k","k");
 
