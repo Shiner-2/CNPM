@@ -758,7 +758,5 @@ public class ScrabbleController extends AnchorPane{
         }
     }
 
-
-
 }
 
