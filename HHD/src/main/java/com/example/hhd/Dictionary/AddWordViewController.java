@@ -3,6 +3,7 @@ package com.example.hhd.Dictionary;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.Algo.Word;
+import com.example.hhd.AppController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -19,7 +20,7 @@ public class AddWordViewController {
     @FXML
     private TextArea UserDefinationEntered;
 
-    Dictionary data = new TrieDictionary();
+    Dictionary data = AppController.data;
 
     public AddWordViewController() throws IOException {
     }

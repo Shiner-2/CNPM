@@ -26,6 +26,8 @@ module com.example.hhd {
     opens com.example.hhd.Translator to javafx.fxml;
     exports com.example.hhd.Algo;
     opens com.example.hhd.Algo to javafx.fxml;
+    exports com.example.hhd.SideBar;
+    opens com.example.hhd.SideBar to javafx.fxml;
     requires javafx.web;
     requires jlayer;
 }

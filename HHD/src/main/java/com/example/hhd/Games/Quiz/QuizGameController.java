@@ -1,6 +1,7 @@
 package com.example.hhd.Games.Quiz;
 
 import com.example.hhd.App;
+import com.example.hhd.SideBar.SideBar;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,13 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class QuizGameController implements Initializable {
+public class QuizGameController extends AnchorPane implements Initializable {
     QuizGame gameData;
 
     @FXML
@@ -29,13 +31,19 @@ public class QuizGameController implements Initializable {
     @FXML
     private Button choiceA, choiceB, choiceC, choiceD;
 
-    public void LoadGames(Event event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Games");
-        stage.setScene(scene);
-        stage.show();
+    public QuizGameController() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Quiz/Quiz.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+    public void LoadGames(Event event) {
+        SideBar.loadGames();
     }
 
     @Override

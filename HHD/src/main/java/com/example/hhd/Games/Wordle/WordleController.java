@@ -3,6 +3,7 @@ package com.example.hhd.Games.Wordle;
 import com.example.hhd.*;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
+import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WordleController{
+public class WordleController extends AnchorPane {
     @FXML
     private Button btn;
     @FXML
@@ -25,21 +27,23 @@ public class WordleController{
     private TextField WordleInput;
     private Integer sz = 5;
     private String HiddenWord = "DOGGY";
-    //private TrieDictionary trie = new TrieDictionary();
     private Integer GuessCount = 0;
-    private Dictionary data = new TrieDictionary();
+    private Dictionary data = AppController.data;
 
     public WordleController() throws IOException {
         HiddenWord = data.randomWord(5).getWord().toLowerCase();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Wordle/Wordle.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
-    public void LoadGames(Event event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Games");
-        stage.setScene(scene);
-        stage.show();
+    public void LoadGames(Event event) {
+        SideBar.loadGames();
     }
 
     public void onWordleBtnSubmit() {
