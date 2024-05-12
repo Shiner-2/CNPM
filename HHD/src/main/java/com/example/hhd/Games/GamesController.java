@@ -46,6 +46,7 @@ public class GamesController extends AnchorPane {
     public void LoadWordle(Event event) {
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(wordle);
+        wordle.onLoad();
     }
 
     public void LoadQuiz(Event event) throws IOException {
