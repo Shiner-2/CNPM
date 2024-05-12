@@ -4,6 +4,7 @@ import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.AppController;
+import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HangmanController implements Initializable {
+public class HangmanController extends AnchorPane implements Initializable {
     @FXML
     private Label HangmanFail;
     @FXML
@@ -63,15 +65,19 @@ public class HangmanController implements Initializable {
     public HangmanController() throws IOException {
         HiddenWord = data.randomWord(10).getWord();
         HiddenWord = HiddenWord.toUpperCase();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Hangman/Hangman.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
-    public void LoadGames(Event event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Games");
-        stage.setScene(scene);
-        stage.show();
+    public void LoadGames(Event event) {
+        SideBar.loadGames();
     }
 
     @Override

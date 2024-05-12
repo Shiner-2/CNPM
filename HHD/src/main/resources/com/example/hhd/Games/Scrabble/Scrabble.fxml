@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #a961e8;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.Games.Scrabble.ScrabbleController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #a961e8;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="btnstart" layoutX="635.0" layoutY="72.0" mnemonicParsing="false" onAction="#onBtnSubmit" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-radius: 20;" text="Submit" textFill="WHITE">
          <font>
@@ -63,4 +63,4 @@
          </children>
       </HBox>
    </children>
-</AnchorPane>
+</fx:root>

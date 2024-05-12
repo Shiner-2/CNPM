@@ -9,11 +9,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TranslatorController {
+public class TranslatorController extends AnchorPane {
     @FXML
     private Label lbLeft;
     @FXML
@@ -23,6 +24,17 @@ public class TranslatorController {
     @FXML
     private TextArea TFRight;
     private boolean state = true;
+
+    public TranslatorController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Translator.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 
     public void changeLanguage(Event event) {
         state = !state;
@@ -45,14 +57,6 @@ public class TranslatorController {
         }
     }
 
-    public void LoadApp(Event event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("App.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("HHD Dictionary");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     public void speakLeft(Event event) {

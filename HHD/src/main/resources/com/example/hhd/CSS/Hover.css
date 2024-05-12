@@ -1,0 +1,7 @@
+#container:hover {
+    -fx-background-color: green;
+}
+
+#container:hover #name{
+    -fx-text-fill: cyan;
+}

@@ -4,6 +4,7 @@ import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.AppController;
+import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ScrabbleController {
+public class ScrabbleController extends AnchorPane{
 //    @FXML
 //    private ImageView box1, box2, box3, box4, box5, box6, box7;
 //
@@ -54,7 +55,14 @@ public class ScrabbleController {
     private Integer TileSize = 98;
     private Integer curPoint = 0;
     public ScrabbleController() throws IOException {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Scrabble/Scrabble.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     public void initialize() throws FileNotFoundException {
@@ -290,13 +298,9 @@ public class ScrabbleController {
         }
     }
 
-    public void LoadGames(Event event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Games");
-        stage.setScene(scene);
-        stage.show();
+    // TODO: test this
+    public void LoadGames(Event event) {
+        SideBar.loadGames();
     }
 
     private boolean checkValid() {

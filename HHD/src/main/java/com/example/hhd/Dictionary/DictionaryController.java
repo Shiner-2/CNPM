@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -23,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class DictionaryController{
+public class DictionaryController extends AnchorPane {
 
     @FXML
     private Button AddWordBtn;
@@ -41,6 +42,17 @@ public class DictionaryController{
 
     private Word currentWord;
 
+    public DictionaryController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(
+                "Dictionary/Dictionary.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 
     @FXML
     private void onUserTyping(){
