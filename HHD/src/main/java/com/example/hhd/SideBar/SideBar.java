@@ -123,7 +123,37 @@ public class SideBar extends AnchorPane implements Initializable {
         SideBarItem body1 = new SideBarItem();
         SideBarItem body2 = new SideBarItem();
         SideBarItem body3 = new SideBarItem();
+
+        path = "HHD/src/main/resources/img/UI button/home.png";
+        try {
+            fis = new FileInputStream(path);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
         body1.setImg(image);
+
+        body1.setOnMouseEntered(event -> {
+            try {
+                FileInputStream f = new FileInputStream("HHD/src/main/resources/img/UI button/home.png");
+                Image image1 = new Image(f);
+                body1.setImg(image1);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        body1.setOnMouseExited(event -> {
+            try {
+                FileInputStream f = new FileInputStream("HHD/src/main/resources/img/UI button/home1.png");
+                Image image1 = new Image(f);
+                body1.setImg(image1);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         body2.setImg(image);
         body3.setImg(image);
         body1.setName("dictionary");
