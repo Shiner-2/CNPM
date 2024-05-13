@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBHelper {
 
@@ -13,10 +14,39 @@ public class DBHelper {
      */
     public static Connection connect() {
         try {
-            return DriverManager.getConnection(URL);
+            Connection conn = DriverManager.getConnection(URL);
+            initializeDatabase(conn);
+            return conn;
         } catch (SQLException e) {
             System.out.println("Connection failed: " + e.getMessage());
             return null;
+        }
+    }
+
+    /**
+     * Initializes the database with required tables.
+     * @param conn Connection to the database
+     */
+    private static void initializeDatabase(Connection conn) {
+        try (Statement stmt = conn.createStatement()) {
+            // SQL statement for creating a new Users table
+            String sqlUsers = "CREATE TABLE IF NOT EXISTS Users (" +
+                              "UserID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                              "Username TEXT NOT NULL," +
+                              "Password TEXT NOT NULL);";
+            stmt.execute(sqlUsers);
+
+            // SQL statement for creating a new UserPreferences table
+            String sqlPreferences = "CREATE TABLE IF NOT EXISTS UserPreferences (" +
+                                    "PreferenceID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                                    "UserID INTEGER," +
+                                    "FavoriteWords TEXT," +
+                                    "GameData TEXT," +
+                                    "RecentSearches TEXT," +
+                                    "FOREIGN KEY(UserID) REFERENCES Users(UserID));";
+            stmt.execute(sqlPreferences);
+        } catch (SQLException e) {
+            System.out.println("Error during database initialization: " + e.getMessage());
         }
     }
 
