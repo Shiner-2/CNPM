@@ -64,7 +64,7 @@
             <version>0.4.0</version>
         </dependency>
         <dependency>
-            <groupId>com.github.almasb</groupId>
+            <groupId>com.github.almasb.fxgl</groupId>
             <artifactId>fxgl</artifactId>
             <version>17.1</version>
             <exclusions>
@@ -86,6 +86,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.36.0.3</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

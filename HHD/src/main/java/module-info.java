@@ -30,4 +30,5 @@ module com.example.hhd {
     opens com.example.hhd.SideBar to javafx.fxml;
     requires javafx.web;
     requires jlayer;
+    requires java.sql;
 }
