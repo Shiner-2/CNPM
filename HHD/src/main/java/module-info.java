@@ -28,6 +28,7 @@ module com.example.hhd {
     opens com.example.hhd.Algo to javafx.fxml;
     exports com.example.hhd.SideBar;
     opens com.example.hhd.SideBar to javafx.fxml;
+    exports com.example.hhd.Database;
     requires javafx.web;
     requires jlayer;
     requires java.sql;
