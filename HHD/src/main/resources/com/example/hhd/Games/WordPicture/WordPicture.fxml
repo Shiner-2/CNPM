@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.Games.WordPicture.WordPictureController">
+    <children>
+        <ImageView fx:id="imageView" fitHeight="170.0" fitWidth="230.0" layoutX="101.0" layoutY="52.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="question" alignment="CENTER" layoutX="139.0" layoutY="232.0" prefHeight="46.0" prefWidth="155.0" style="-fx-background-radius: 10px; -fx-background-color: GREENYELLOW;" text="test" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="15.0" />
+            </font></Label>
+        <Label layoutX="485.0" layoutY="72.0" text="Your Point" textAlignment="CENTER">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="Point" layoutX="521.0" layoutY="99.0" text="0" textAlignment="CENTER">
+            <font>
+                <Font name="Forte" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.46295517683029175" green="0.5894736647605896" blue="0.45629629492759705" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.02959064394235611" green="0.12248732894659042" blue="0.7263157963752747" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <ImageView fx:id="QuizNextBtn" fitHeight="98.0" fitWidth="100.0" layoutX="481.0" layoutY="232.0" onMouseClicked="#setQuestion">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <Image url="@/img/next-button-3d-render-transparent-background-click-button-png.png" />
+        </ImageView>
+        <TextField fx:id="userInputWord" layoutX="102.0" layoutY="291.0" prefHeight="28.0" prefWidth="230.0" style="-fx-border-color: black; -fx-background-color: white;">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+    </children>
+</AnchorPane>
