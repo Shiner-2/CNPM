@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -29,6 +30,12 @@ public class SideBar extends AnchorPane implements Initializable {
     private VBox footer;
     @FXML
     private AnchorPane container;
+    @FXML
+    private Line line;
+    @FXML
+    private Line line1;
+
+    public static SideBarItem curSelect = null;
 
     private int bigsz = 240;
     private int smallsz = 80;
@@ -50,19 +57,24 @@ public class SideBar extends AnchorPane implements Initializable {
         header.setPrefWidth(smallsz);
         body.setPrefWidth(smallsz);
         footer.setPrefWidth(smallsz);
+        line.setVisible(true);
+        //line1.setVisible(false);
+
+        container.getChildren().remove(line1);
+
         for(Node node: header.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setNoHover();
+                ((SideBarItem) node).SideBarNoHover();
             }
         }
         for(Node node: body.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setNoHover();
+                ((SideBarItem) node).SideBarNoHover();
             }
         }
         for(Node node: footer.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setNoHover();
+                ((SideBarItem) node).SideBarNoHover();
             }
         }
     }
@@ -72,19 +84,24 @@ public class SideBar extends AnchorPane implements Initializable {
         header.setPrefWidth(bigsz);
         body.setPrefWidth(bigsz);
         footer.setPrefWidth(bigsz);
+        line.setVisible(false);
+        line1.setVisible(true);
+
+        container.getChildren().add(line1);
+
         for(Node node: header.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setHover();
+                ((SideBarItem) node).SideBarHover();
             }
         }
         for(Node node: body.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setHover();
+                ((SideBarItem) node).SideBarHover();
             }
         }
         for(Node node: footer.getChildren()) {
             if(node instanceof SideBarItem) {
-                ((SideBarItem) node).setHover();
+                ((SideBarItem) node).SideBarHover();
             }
         }
     }
@@ -106,116 +123,53 @@ public class SideBar extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String path = "HHD/src/main/resources/Scrabble/Image/PNG/Blue/letter.png";
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(path);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        Image image = new Image(fis,70,70,false,false);
 
-        SideBarItem head1 = new SideBarItem();
-        head1.setImg(image);
-        head1.setName("logo");
+        SideBarItem head1 = new SideBarItem("HHD/src/main/resources/img/UI_button/home.png",
+                "HHD/src/main/resources/img/UI_button/home1.png", 80,70,"home");
         header.getChildren().add(head1);
+        head1.setSelected(true);
+        head1.setHover();
+        curSelect = head1;
 
-        SideBarItem body1 = new SideBarItem();
-        SideBarItem body2 = new SideBarItem();
-        SideBarItem body3 = new SideBarItem();
-
-        path = "HHD/src/main/resources/img/UI button/home.png";
-        try {
-            fis = new FileInputStream(path);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        body1.setImg(image);
-
-        body1.setOnMouseEntered(event -> {
-            try {
-                FileInputStream f = new FileInputStream("HHD/src/main/resources/img/UI button/home.png");
-                Image image1 = new Image(f);
-                body1.setImg(image1);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        body1.setOnMouseExited(event -> {
-            try {
-                FileInputStream f = new FileInputStream("HHD/src/main/resources/img/UI button/home1.png");
-                Image image1 = new Image(f);
-                body1.setImg(image1);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        body2.setImg(image);
-        body3.setImg(image);
-        body1.setName("dictionary");
-        body2.setName("Games");
-        body3.setName("Translator");
-
+        SideBarItem body1 = new SideBarItem("HHD/src/main/resources/img/UI_button/book.png",
+                "HHD/src/main/resources/img/UI_button/book1.png", 77, 70, "dictionary");
         body1.setOnMouseClicked(event -> {
             loadDictionary();
+            body1.onClick();
         });
-
+        SideBarItem body2 = new SideBarItem("HHD/src/main/resources/img/UI_button/game.png",
+                "HHD/src/main/resources/img/UI_button/game1.png", 83, 50, "game");
         body2.setOnMouseClicked(event -> {
             loadGames();
+            body2.onClick();
         });
-
+        SideBarItem body3= new SideBarItem("HHD/src/main/resources/img/UI_button/translator.png",
+                "HHD/src/main/resources/img/UI_button/translator1.png", 83, 50, "translator");
         body3.setOnMouseClicked(event -> {
             loadTranslator();
+            body3.onClick();
         });
 
         body.getChildren().addAll(body1,body2,body3);
 
-        SideBarItem foot1 = new SideBarItem();
-        foot1.setImg(image);
-        foot1.setName("Sign out");
-        footer.getChildren().add(foot1);
+        SideBarItem foot1 = new SideBarItem("HHD/src/main/resources/img/UI_button/setting.png",
+                "HHD/src/main/resources/img/UI_button/setting1.png", 70,70,"Setting");
+        SideBarItem foot2 = new SideBarItem("HHD/src/main/resources/img/UI_button/home.png",
+                "HHD/src/main/resources/img/UI_button/home1.png", 70,70,"User");
+        foot2.setDisable(true);
 
-        setNoHover();
+        footer.getChildren().addAll(foot1,foot2);
 
-//        TranslateTransition translateTransition = new TranslateTransition();
-//        translateTransition.setDuration(Duration.seconds(1));
-//        translateTransition.setNode(container);
-//        translateTransition.setToX(100);
-//        translateTransition.setToY(0);
-//
-//
-//        TranslateTransition translateTransition1 = new TranslateTransition();
-//        translateTransition.setDuration(Duration.seconds(1));
-//        translateTransition.setNode(container);
-//        translateTransition.setToX(0);
-//        translateTransition.setToY(0);
-//
-//        ScaleTransition transition = new ScaleTransition();
-//        transition.setDuration(Duration.seconds(1));
-//        transition.setToX(3);
-//        transition.setNode(container);
-//
-//        ScaleTransition transition1 = new ScaleTransition();
-//        transition1.setDuration(Duration.seconds(1));
-//        transition1.setToX(1);
-//        transition1.setNode(container);
 
         container.setOnMouseEntered(event -> {
             setHover();
-//            translateTransition.play();
-//            transition.play();
         });
 
         container.setOnMouseExited(event -> {
             setNoHover();
-//            transition1.play();
-//            translateTransition1.play();
         });
 
+        setNoHover();
         // TODO: set onclick
     }
 

@@ -1,7 +1,7 @@
 #container:hover {
-    -fx-background-color: green;
+    -fx-background-color: transparent;
 }
 
 #container:hover #name{
-    -fx-text-fill: cyan;
+    -fx-text-fill: #3b8484;
 }
