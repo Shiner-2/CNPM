@@ -150,7 +150,7 @@ public class WordleWordController extends VBox implements Initializable {
                     return;
                 }
                 char c = keyEvent.getCode().toString().toUpperCase().charAt(0);
-                if(c >= 'A'&& c <= 'Z') {
+                if(c >= 'A'&& c <= 'Z' && cur.length() < 5) {
                     cur += keyEvent.getText().toUpperCase();
                 }
             }

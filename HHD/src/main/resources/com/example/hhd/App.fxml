@@ -4,7 +4,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.AppController">
    <children>
-      <AnchorPane fx:id="MainScreen" layoutX="80.0" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: cyan;" />
-      <AnchorPane fx:id="SideBarContainer" prefHeight="700.0" prefWidth="80.0" style="-fx-border-color: black;" />
+      <AnchorPane fx:id="MainScreen" layoutX="80.0" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #d8db9e;" />
+      <AnchorPane fx:id="SideBarContainer" prefHeight="700.0" prefWidth="80.0" />
    </children>
 </AnchorPane>

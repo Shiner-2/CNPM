@@ -70,40 +70,5 @@ public class AppController implements Initializable {
     }
 
 
-//    public void LoadGames(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Games");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    public void LoadDictionary(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Dictionary/Dictionary.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Dictionary");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    public void LoadTranslator(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Translator.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Translator");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    @FXML
-//    public void about(Event event) {
-//        Alert info = new Alert(Alert.AlertType.INFORMATION);
-//        info.setTitle("About us");
-//        info.setContentText("This project is made for education purpose, by HHD group in UET university");
-//        info.show();
-//    }
-
 
 }

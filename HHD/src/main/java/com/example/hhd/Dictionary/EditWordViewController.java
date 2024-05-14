@@ -29,10 +29,7 @@ public class EditWordViewController implements Initializable {
     Word ww = new Word("k","k");
 
     public EditWordViewController() throws IOException {
-        File myObj = new File("HHD/src/main/resources/data/temp.txt");
-        Scanner myReader = new Scanner(myObj);
-        word = myReader.nextLine();
-        word = word.toLowerCase();
+        word = DictionaryController.curString.toLowerCase();
         Word w = new Word("hello","bye");
 
         ArrayList<Word> arr = new ArrayList<>();

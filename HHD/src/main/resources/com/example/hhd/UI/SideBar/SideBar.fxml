@@ -2,11 +2,14 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<fx:root fx:id="container" prefHeight="700.0" prefWidth="80.0" style="-fx-background-color: yellow;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="container" prefHeight="700.0" prefWidth="80.0" style="-fx-background-color: #1b1f28;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="header" alignment="CENTER" prefHeight="160.0" prefWidth="80.0" style="-fx-border-color: black;" />
-      <VBox fx:id="body" alignment="CENTER" layoutY="200.0" prefHeight="300.0" prefWidth="80.0" style="-fx-border-color: red;" />
-      <VBox fx:id="footer" alignment="CENTER" layoutY="540.0" prefHeight="160.0" prefWidth="80.0" style="-fx-border-color: black;" />
+      <VBox fx:id="header" alignment="CENTER" prefHeight="80.0" prefWidth="80.0" />
+      <VBox fx:id="body" alignment="CENTER" layoutY="200.0" prefHeight="300.0" prefWidth="80.0" />
+      <VBox fx:id="footer" alignment="CENTER" layoutY="540.0" prefHeight="160.0" prefWidth="80.0" />
+      <Line fx:id="line" endX="-90.0" endY="659.0" layoutX="170.0" layoutY="41.0" startX="-90.0" startY="-41.0" stroke="GREY" strokeLineCap="ROUND" strokeWidth="4.0" />
+      <Line fx:id="line1" endX="-90.0" endY="659.0" layoutX="330.0" layoutY="41.0" startX="-90.0" startY="-41.0" stroke="GREY" strokeLineCap="ROUND" strokeWidth="4.0" />
    </children>
 </fx:root>

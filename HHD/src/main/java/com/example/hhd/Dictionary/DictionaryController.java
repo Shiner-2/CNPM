@@ -42,6 +42,8 @@ public class DictionaryController extends AnchorPane {
 
     private Word currentWord;
 
+    public static String curString = "";
+
     public DictionaryController() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(
                 "Dictionary/Dictionary.fxml"));
@@ -75,20 +77,14 @@ public class DictionaryController extends AnchorPane {
         });
         recommendWord.setOnMouseClicked(mouseEvent -> {
             currentWord = recommendWord.getSelectionModel().getSelectedItem();
+            curString = currentWord.getWord();
             wordDefinition.getChildren().clear();
             showWordDefinition(currentWord);
-            try {
-                FileWriter myWriter = new FileWriter("HHD/src/main/resources/data/temp.txt");
-                myWriter.write(currentWord.getWord());
-                myWriter.close();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         });
     }
 
+    
+    // TODO: change this
     public void LoadApp(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
