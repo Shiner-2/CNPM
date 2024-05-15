@@ -48,6 +48,6 @@ public class WordleLetterController extends VBox implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        WordleLetter.setStyle("-fx-background-color: white;");
     }
 }

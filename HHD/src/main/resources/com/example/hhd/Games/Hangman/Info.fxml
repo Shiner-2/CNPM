@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #bfcddb;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="96.0" layoutY="39.0" prefHeight="35.0" prefWidth="107.0" text="Luật chơi">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutX="17.0" layoutY="115.0" prefHeight="170.0" prefWidth="266.0" text="- Đoán một từ bị ẩn &#10;- Mỗi lần bạn có thể đoán một &#10;chữ cái&#10;- Nếu chữ cái không có trong từ bị&#10;ẩn, bạn nhận 1 lượt sai&#10;- Khi nhận 8 lượt sai, bạn thua&#10;- Nếu đoán được từ bị ẩn &#10;trước khi sai 8 lượt, bạn thắng">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextArea>
+      <ImageView fx:id="img" fitHeight="50.0" fitWidth="50.0" layoutX="236.0" layoutY="14.0">
+         <image>
+            <Image url="@../../../../../img/Square%20Buttons/Square%20Buttons/X%20Square%20Button.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</fx:root>

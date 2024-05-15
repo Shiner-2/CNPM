@@ -38,7 +38,7 @@
          <font>
             <Font size="14.0" />
          </font></TextArea>
-      <TextArea fx:id="TFRight" disable="true" layoutX="325.0" layoutY="190.0" prefHeight="100.0" prefWidth="250.0" promptText="Press Translate and wait a bit" style="-fx-border-color: black;" stylesheets="@CSS/translate.css">
+      <TextArea fx:id="TFRight" disable="true" layoutX="325.0" layoutY="190.0" prefHeight="100.0" prefWidth="250.0" promptText="Press Translate and wait a bit" style="-fx-border-color: black;" stylesheets="@../../../CSS/translate.css">
          <font>
             <Font size="14.0" />
          </font>
