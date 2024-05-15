@@ -1,12 +1,15 @@
 package com.example.hhd;
 
 import com.example.hhd.Database.UserManager;
+import javafx.beans.binding.Bindings;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,33 +18,39 @@ public class LoginController implements Initializable {
     @FXML
     private TextField Username;
     @FXML
-    private TextField Password;
+    private PasswordField Password;
+    @FXML
+    private TextField shownPassword;
     @FXML
     private CheckBox showPassword;
-
-    private String password = "";
-
-
-    // TODO: watch video tutorial on this
     @FXML
-    public void onPasswordType(KeyEvent e) {
+    private AnchorPane container;
 
+    @FXML
+    public void CheckboxChecked(Event e) {
+        if(showPassword.isSelected()) {
+            shownPassword.setText(Password.getText());
+            shownPassword.setVisible(true);
+            Password.setVisible(false);
+        } else{
+            Password.setText(shownPassword.getText());
+            shownPassword.setVisible(false);
+            Password.setVisible(true);
+        }
     }
 
     @FXML
     public void onLoginClick(Event e) {
         String username = Username.getText();
-        password = Password.getText();
+        String password = Password.getText();
         UserManager.getUserByUsername(username);
-    }
-
-    public LoginController() {
-        System.out.println("hello");
-        UserManager.getUserByUsername("hello");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        shownPassword.setVisible(false);
+        container.setOnMouseClicked(event -> {
+            container.requestFocus();
+        });
     }
 }
