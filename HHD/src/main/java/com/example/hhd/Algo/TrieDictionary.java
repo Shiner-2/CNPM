@@ -18,39 +18,34 @@ public class TrieDictionary extends Dictionary {
     private File toExportFile = new File("HHD/src/main/resources/data/dictionary.txt");
 
     public TrieDictionary() throws IOException {
-        System.out.println("FUCKKKKKKKKK");
         File file = new File("HHD/src/main/resources/data/vietanh.txt");
-        if (file.exists()) {
-            importFromFile(file);
-        } else {
-            System.out.println("FUCKKKKKOFFFOFOOFFOOFOFOFO");
-        }
+        importFromFile(file);
     }
 
     public TrieDictionary(File file) throws IOException {
         importFromFile(file);
     }
 
-//    public TrieDictionary(int mode, boolean firstTime) throws IOException {
-//        switch (mode) {
-//            case VI_EN -> {
-//                trie.clear();
-//                setToExportFile(new File("HHD/src/main/resources/data/dictionaryViEn.txt"));
-//                if (firstTime) {
-//                    importFromFile(new File("HHD/src/main/resources/data/vietanh.txt"));
-//                    exportToFile(toExportFile);
-//                }
-//            }
-//            case EN_VI -> {
-//                trie.clear();
-//                setToExportFile(new File("HHD/src/main/resources/data/dictionaryEnVi.txt"));
-//                if (firstTime) {
-//                    importFromFile(new File("HHD/src/main/resources/data/anhviet109K.txt"));
-//                    exportToFile(toExportFile);
-//                }
-//            }
-//        }
-//    }
+    public TrieDictionary(int mode, boolean firstTime) throws IOException {
+        switch (mode) {
+            case VI_EN -> {
+                trie.clear();
+                setToExportFile(new File("HHD/src/main/resources/data/dictionaryViEn.txt"));
+                if (firstTime) {
+                    importFromFile(new File("HHD/src/main/resources/data/vietanh.txt"));
+                    exportToFile(toExportFile);
+                }
+            }
+            case EN_VI -> {
+                trie.clear();
+                setToExportFile(new File("HHD/src/main/resources/data/dictionaryEnVi.txt"));
+                if (firstTime) {
+                    importFromFile(new File("HHD/src/main/resources/data/anhviet109K.txt"));
+                    exportToFile(toExportFile);
+                }
+            }
+        }
+    }
 
     public void setToExportFile(File file) {
         this.toExportFile = file;
