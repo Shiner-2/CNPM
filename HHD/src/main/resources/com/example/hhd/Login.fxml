@@ -59,7 +59,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="363.0" layoutY="484.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@CSS/Login.css">
+      <HBox alignment="CENTER" layoutX="363.0" layoutY="484.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
          <children>
             <Label onMouseClicked="#onLoginClick" style="-fx-background-color: transparent;" text="Log in" textFill="#f7f7f7">
                <font>
@@ -71,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <HBox alignment="CENTER" layoutX="363.0" layoutY="578.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@CSS/Login.css">
+      <HBox alignment="CENTER" layoutX="363.0" layoutY="578.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
          <children>
             <Label style="-fx-background-color: transparent;" text="Sign up" textFill="#f7f7f7">
                <font>

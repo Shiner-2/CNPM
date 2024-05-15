@@ -18,28 +18,28 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="choiceA" layoutX="87.0" layoutY="210.0" onAction="#handleChoiceA" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #98b094;" stylesheets="@../../CSS/Quiz.css" text="Button">
+      <Button fx:id="choiceA" layoutX="87.0" layoutY="210.0" onAction="#handleChoiceA" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #98b094;" stylesheets="@../../../../../CSS/Quiz.css" text="Button">
          <font>
             <Font size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="choiceB" layoutX="316.0" layoutY="210.0" onAction="#handleChoiceB" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #98b094;" stylesheets="@../../CSS/Quiz.css" text="Button">
+      <Button fx:id="choiceB" layoutX="316.0" layoutY="210.0" onAction="#handleChoiceB" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #98b094;" stylesheets="@../../../../../CSS/Quiz.css" text="Button">
          <font>
             <Font size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="choiceC" layoutX="87.0" layoutY="293.0" onAction="#handleChoiceC" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #98b094;" stylesheets="@../../CSS/Quiz.css" text="Button">
+      <Button fx:id="choiceC" layoutX="87.0" layoutY="293.0" onAction="#handleChoiceC" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #98b094;" stylesheets="@../../../../../CSS/Quiz.css" text="Button">
          <font>
             <Font size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="choiceD" layoutX="316.0" layoutY="293.0" onAction="#handleChoiceD" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-color: #98b094; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@../../CSS/Quiz.css" text="Button">
+      <Button fx:id="choiceD" layoutX="316.0" layoutY="293.0" onAction="#handleChoiceD" prefHeight="54.0" prefWidth="150.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-background-color: #98b094; -fx-border-radius: 10; -fx-background-radius: 10;" stylesheets="@../../../../../CSS/Quiz.css" text="Button">
          <font>
             <Font size="18.0" />
          </font>

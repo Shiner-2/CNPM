@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="700.0" prefWidth="1020.0" stylesheets="@../CSS/Games.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="GamesScreen" prefHeight="700.0" prefWidth="1020.0" stylesheets="@../../../../CSS/Games.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="24.0" opacity="0.8" text="GAMES">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="31.0" opacity="0.8" text="GAMES">
          <font>
             <Font name="Comic Sans MS Bold" size="50.0" />
          </font>
@@ -35,7 +35,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <VBox fx:id="GamesWordleBtn" alignment="CENTER" layoutX="88.0" layoutY="117.0" onMouseClicked="#LoadWordle" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      <VBox fx:id="GamesWordleBtn" alignment="CENTER" layoutX="168.0" layoutY="121.0" onMouseClicked="#LoadWordle" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="150.0">
                <image>
@@ -74,7 +74,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <VBox fx:id="GamesHangmanBtn" alignment="CENTER" layoutX="355.0" layoutY="117.0" onMouseClicked="#LoadHangman" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      <VBox fx:id="GamesHangmanBtn" alignment="CENTER" layoutX="693.0" layoutY="144.0" onMouseClicked="#LoadHangman" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="150.0">
                <image>
@@ -113,7 +113,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <VBox fx:id="GamesScrabbleBtn" alignment="CENTER" layoutX="355.0" layoutY="265.0" onMouseClicked="#LoadScrabble" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      <VBox fx:id="GamesScrabbleBtn" alignment="CENTER" layoutX="693.0" layoutY="394.0" onMouseClicked="#LoadScrabble" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="150.0">
                <image>
@@ -152,7 +152,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <VBox fx:id="GamesQuizBtn" alignment="CENTER" layoutX="88.0" layoutY="265.0" onMouseClicked="#LoadQuiz" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      <VBox fx:id="GamesQuizBtn" alignment="CENTER" layoutX="168.0" layoutY="386.0" onMouseClicked="#LoadQuiz" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="150.0">
                <image>
