@@ -8,6 +8,31 @@ import java.sql.SQLException;
 public class UserManager {
 
     /**
+     * Checks if a username and password combination is valid.
+     *
+     * @param username The username to check.
+     * @param password The plain text password entered by the user.
+     * @return true if the credentials are valid, false otherwise.
+     */
+    public static boolean isValidCredentials(String username, String password) {
+        String sql = "SELECT Password FROM Users WHERE Username = ?";
+
+        try (Connection conn = DBHelper.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    String db_password = rs.getString("Password");
+                    return (password).equals(db_password);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error validating credentials: " + e.getMessage());
+        }
+        return false;
+    }
+
+    /**
      * Checks if the username already exists in the database.
      * @param username the username to check
      * @return true if the username exists, false otherwise
