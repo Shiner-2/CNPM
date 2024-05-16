@@ -76,4 +76,19 @@ public class DatabaseTests {
             fail("SQL error occurred: " + e.getMessage());
         }
     }
+
+    @Test
+    public void testIsValidCredentials() {
+        UserManager.addUser("user123", "password123");
+    
+        // Test with correct username and password
+        assertTrue(UserManager.isValidCredentials("user123", "password123"), "Credentials should be valid");
+    
+        // Test with incorrect password
+        assertFalse(UserManager.isValidCredentials("user123", "wrongPassword"), "Credentials should be invalid with wrong password");
+    
+        // Test with non-existing username
+        assertFalse(UserManager.isValidCredentials("nonExistentUser", "password123"), "Credentials should be invalid with non-existent username");
+    }
+    
 }
