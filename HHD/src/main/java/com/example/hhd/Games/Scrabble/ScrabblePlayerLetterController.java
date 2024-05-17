@@ -14,6 +14,7 @@ public class ScrabblePlayerLetterController extends ImageView {
     @FXML
     private ImageView ScrabblePlayerLetterLetter;
     private String curLetter;
+    public int pos = 0;
 
     public ScrabblePlayerLetterController() {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(

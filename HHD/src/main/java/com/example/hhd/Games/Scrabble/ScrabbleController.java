@@ -4,6 +4,8 @@ import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.AppController;
+import com.example.hhd.Games.GamesController;
+import com.example.hhd.Games.Hangman.HangmanInfoController;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,13 +13,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -37,14 +39,30 @@ public class ScrabbleController extends AnchorPane{
     @FXML
     private GridPane ScrabbleContainer;
     @FXML
-    private GridPane ScrabbleLetterContainer;
+    private AnchorPane container;
+    @FXML
+    private HBox ScrabbleLetterContainer;
     @FXML
     private Label CurrentPoint;
+    @FXML
+    private Button btn1;
+    @FXML
+    private Button btn2;
+    @FXML
+    private Button btn3;
+    @FXML
+    private ImageView imgV1;
+    @FXML
+    private ImageView imgV2;
+    @FXML
+    private ImageView imgV3;
     private boolean dropped = true;
     private int sz = 30;
     private int sz2 = 75;
+    ClipboardContent cc = new ClipboardContent();
     //private ImageView curDrag;
     private String curCharDrag;
+    private int curPos;
     ArrayList<ArrayList<ScrabbleBoardWordController>> board = new ArrayList<>();
     ArrayList<ArrayList<Integer>> powerup = new ArrayList<>();
     private Dictionary data = AppController.data;
@@ -65,6 +83,40 @@ public class ScrabbleController extends AnchorPane{
         }
     }
 
+    public void initRandomBag() throws FileNotFoundException {
+        randomBag.clear();
+        File myFile = new File("HHD/src/main/resources/Scrabble/Image/Bag.txt");
+        Scanner scanner = new Scanner(myFile);
+        while (scanner.hasNext()){
+            String string = scanner.nextLine();
+            //String key = String.valueOf(string.charAt(0));
+            String value = string.substring(2);
+            Integer val = Integer.valueOf(value);
+            randomBag.add(val);
+        }
+    }
+
+    public void resetGame() throws FileNotFoundException {
+        initRandomBag();
+        TileSize = 98;
+        curPoint = 0;
+        String yourPoint = "Your Point: " + curPoint;
+        CurrentPoint.setText(yourPoint);
+        for(int i = 0; i < 15; i++) {
+            for(int j = 0; j < 15; j++) {
+                board.get(i).get(j).retreat();
+                board.get(i).get(j).setDisable(false);
+                board.get(i).get(j).setUnSealed();
+            }
+        }
+        for (int i = 0; i < 7 ; i++) {
+            //System.out.println(getRandomTile() + " ");
+            player.get(i).setChar(getRandomTile());
+            player.get(i).setDisable(false);
+            player.get(i).setVisible(true);
+        }
+    }
+
     public void initialize() throws FileNotFoundException {
         File myObj = new File("HHD/src/main/resources/Scrabble/Image/Board.txt");
         Scanner myReader = new Scanner(myObj);
@@ -75,15 +127,7 @@ public class ScrabbleController extends AnchorPane{
             }
             powerup.add(arr);
         }
-        File myFile = new File("HHD/src/main/resources/Scrabble/Image/Bag.txt");
-        Scanner scanner = new Scanner(myFile);
-        while (scanner.hasNext()){
-            String string = scanner.nextLine();
-            //String key = String.valueOf(string.charAt(0));
-            String value = string.substring(2);
-            Integer val = Integer.valueOf(value);
-            randomBag.add(val);
-        }
+        initRandomBag();
         File myFile1 = new File("HHD/src/main/resources/Scrabble/Image/Point.txt");
         Scanner scanner1 = new Scanner(myFile1);
         for(int i = 1 ; i <= 26 ; i++){
@@ -141,7 +185,7 @@ public class ScrabbleController extends AnchorPane{
                 lb.setOnDragDropped(event -> {
                     //System.out.println("goes here");
                     //System.out.println(lb.isSealed());
-                    if(!lb.isSealed()){
+                    if(!lb.isSealed() && !lb.isChoosed()){
                         dropped = true;
                         //System.out.println("drop");
                         try {
@@ -170,75 +214,81 @@ public class ScrabbleController extends AnchorPane{
             }
             board.add(arr);
         }
-        for(int i = 1; i <= 7; i++){
-            ColumnConstraints column = new ColumnConstraints();
-            column.setPrefWidth(sz2);
-            column.setMaxWidth(sz2);
-            column.setMinWidth(sz2);
-            column.setHgrow(Priority.NEVER);
-            ScrabbleLetterContainer.getColumnConstraints().add(column);
-        }
         for(int i = 0 ; i < 7 ; i++){
             ScrabblePlayerLetterController splc = new ScrabblePlayerLetterController();
+            splc.pos = i;
             String randomLetter = getRandomTile();
             splc.setChar(randomLetter);
             splc.setOnDragDetected(event -> {
                 onDrag(event);
             });
             splc.setOnDragDone(event -> {
-                //System.out.println("donehere");
-                //System.out.println(dropped);
                 if(dropped){
                     splc.setDisable(true);
+                    splc.setVisible(false);
                 }
             });
             //TODO: drag and stuff at splc
-            ScrabbleLetterContainer.add(splc,i,0);
+            ScrabbleLetterContainer.getChildren().add(splc);
             player.add(splc);
         }
-//        System.out.println(randomBag);
-//        int sm = 0;
-//        for(int i = 0 ; i < randomBag.size(); i++){
-//            sm += randomBag.get(i);
-//        }
-//        System.out.println(sm);
-    }
-
-    public Node getGridNode (GridPane gp, int col, int row) {
-        for (Node node : gp.getChildren()) {
-            if(gp.getRowIndex(node) == row && gp.getColumnIndex(node) == col) {
-                return node;
+        container.setOnDragDropped(event -> {
+            if(cc.getString().equals("nope")) return;
+            dropped = true;
+            if (curPos >= 0) {
+                player.get(curPos).setVisible(true);
+                player.get(curPos).setDisable(false);
+            } {
+                curPos = -1;
+                curCharDrag = "-";
             }
+        });
+        container.setOnDragOver(event ->  {
+            event.acceptTransferModes(TransferMode.ANY);
+            event.consume();
+        });
+
+        setUpBtn(btn1);
+        setUpBtn(btn2);
+        setUpBtn(btn3);
+
+        GamesController.setHoverEffect(imgV1,imgV2,imgV3);
+
+        AnchorPane anchorPane = new AnchorPane();
+        try {
+            ScrabbleInfoController info = new ScrabbleInfoController();
+            anchorPane.getChildren().add(info);
+            ImageView imageView = info.getImg();
+            imageView.setOnMouseClicked(event -> {
+                popup.hide();
+            });
+            popup.getContent().add(anchorPane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
-    @FXML
-    private void startGame() throws FileNotFoundException {
-//        for(ImageView i : boxes){
-//            String path = String.format("C:\\Users\\pnhd2\\Desktop\\OOP-UET\\Baitaplon\\Big-Homework-OOP\\HHD\\src\\main\\resources\\Scrabble\\Image\\PNG\\Blue\\letter_%c.png",getRandomTile());
-//            FileInputStream fis = new FileInputStream(path);
-//            Image img = new Image(fis);
-//            i.setImage(img);
-//        }
-    }
-
-    private Image getImage(String s) throws FileNotFoundException {
-        String path = "HHD/src/main/resources/Scrabble/Image/PNG/Blue/letter_" + s.toUpperCase() + ".png";
-        FileInputStream fis = new FileInputStream(path);
-        Image img = new Image(fis,50,50,false,false);
-        return img;
+    private void setUpBtn(Button btn) {
+        btn.setOnMouseEntered(event -> {
+            btn.setStyle("-fx-background-color: #f7b63e; -fx-background-radius: 20");
+        });
+        btn.setOnMouseExited(event -> {
+            btn.setStyle("-fx-background-color: orange; -fx-background-radius: 20");
+        });
     }
 
     Random random = new Random();
     private String getRandomTile() {
         char c = '-';
         int num = random.nextInt(TileSize)+1;
+        //System.out.print(num + " " + randomBag.size() + " ");
         for(int i = 0 ;i < randomBag.size(); i++) {
             if(randomBag.get(i)>0){
                 num = num - randomBag.get(i);
                 if(num<=0){
+                    //System.out.print(i + " ");
                     c = (char) (i+65);
+                    randomBag.set(i,randomBag.get(i)-1);
                     TileSize--;
                     break;
                 }
@@ -249,24 +299,27 @@ public class ScrabbleController extends AnchorPane{
 
     @FXML
     public void onDrag(MouseEvent event) {
+        dropped = false;
         Node node = (Node) event.getSource();
         if (node instanceof ScrabblePlayerLetterController) {
             curCharDrag = ((ScrabblePlayerLetterController) node).getCurLetter();
+            curPos = ((ScrabblePlayerLetterController) node).pos;
         } else {
             if (node instanceof ScrabbleBoardWordController) {
                 if(((ScrabbleBoardWordController) node).isSealed() || ((ScrabbleBoardWordController) node).getCharacter() == "?") return;
                 curCharDrag = ((ScrabbleBoardWordController) node).getCharacter();
+                curPos = ((ScrabbleBoardWordController) node).pos;
             } else{
                 return;
             }
         }
         Dragboard db = node.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent cc = new ClipboardContent();
-        cc.putString("Something");
+        if(event.getSource() instanceof ScrabblePlayerLetterController) {
+            cc.putString("nope");
+        } else {
+            cc.putString("Something");
+        }
         db.setContent(cc);
-//        System.out.println("");
-//        System.out.println(event.getSceneX());
-//        System.out.println(event.getSceneY());
     }
 
     @FXML
@@ -294,6 +347,7 @@ public class ScrabbleController extends AnchorPane{
         if(node instanceof ScrabbleBoardWordController) {
             ((ScrabbleBoardWordController) node).setImage(curCharDrag);
             ((ScrabbleBoardWordController) node).setCharacter(curCharDrag);
+            ((ScrabbleBoardWordController) node).pos = curPos;
             ((ScrabbleBoardWordController) node).setChoosed(true);
         }
     }
@@ -736,8 +790,10 @@ public class ScrabbleController extends AnchorPane{
             if(player.get(i).isDisable()){
                 player.get(i).setChar(getRandomTile());
                 player.get(i).setDisable(false);
+                player.get(i).setVisible(true);
             }
         }
+
 
         String yourpoint = "Your Point: " + curPoint;
         CurrentPoint.setText(yourpoint);
@@ -755,8 +811,34 @@ public class ScrabbleController extends AnchorPane{
         }
         for(int i = 0; i < 7 ; i++){
             player.get(i).setDisable(false);
+            player.get(i).setVisible(true);
         }
     }
 
+    public void ResetBag() throws FileNotFoundException {
+        for(int i = 0;i < 7; i++) {
+            if(player.get(i).isDisable()){
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("You must return all letter before swap");
+                a.show();
+                return;
+            }
+        }
+        for (int i = 0; i < 7 ; i++) {
+            String k = player.get(i).getCurLetter();
+            k = k.toLowerCase();
+            int c = k.charAt(0) - 'a';
+            TileSize++;
+            randomBag.set(c,randomBag.get(c)+1);
+            player.get(i).setChar(getRandomTile());
+        }
+    }
+
+    private Popup popup = new Popup();
+    public void showInfo(Event event) {
+        popup.show(ScrabbleContainer.getScene().getWindow()
+                ,ScrabbleContainer.localToScreen(0,0).getX()
+                ,ScrabbleContainer.localToScreen(0,0).getY());
+    }
 }
 
