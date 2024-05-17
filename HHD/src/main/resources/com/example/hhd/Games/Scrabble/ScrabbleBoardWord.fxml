@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<fx:root fx:id="ScrabbleBoardWordWord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" style="-fx-border-color: black;" type="AnchorPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<fx:root fx:id="ScrabbleBoardWordWord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffe5c6; -fx-border-color: white; -fx-border-width: 0.5;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="Overlay" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: red; -fx-border-color: black;" visible="false" />
-      <ImageView fx:id="ImageOverlay" fitHeight="30.0" fitWidth="30.0" style="-fx-border-color: black;" pickOnBounds="true" preserveRatio="true" visible="false" />
+      <AnchorPane fx:id="Overlay" prefHeight="30.0" prefWidth="30.0" style="-fx-border-color: #8059ff; -fx-border-width: 3; -fx-border-radius: 7;" visible="false" />
+      <HBox alignment="CENTER" layoutX="2.0" layoutY="1.0" prefHeight="25.0" prefWidth="25.0">
+         <children>
+            <Label fx:id="lb">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="ImageOverlay" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" />
    </children>
 </fx:root>

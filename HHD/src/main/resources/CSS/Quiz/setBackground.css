@@ -1,0 +1,6 @@
+#QuizScreen {
+    -fx-background-image:url('../../img/Quiz/background.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
