@@ -31,6 +31,18 @@ public class DictionaryController extends AnchorPane {
 
     Dictionary data = AppController.data;
 
+    static Dictionary dataVI_EN;
+
+    static {
+        try {
+            dataVI_EN = new TrieDictionary(Dictionary.VI_EN, true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int mode = Dictionary.EN_VI;
+
     @FXML
     private TextField userInputWord;
 
@@ -53,6 +65,22 @@ public class DictionaryController extends AnchorPane {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
+        }
+    }
+
+    @FXML
+    private void onSwitch() {
+        mode ^= 1;
+        if (mode == Dictionary.EN_VI) {
+            data = AppController.data;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
+        } else {
+            data = dataVI_EN;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
         }
     }
 

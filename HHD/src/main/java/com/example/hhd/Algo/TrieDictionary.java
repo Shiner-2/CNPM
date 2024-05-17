@@ -9,9 +9,6 @@ import java.util.Locale;
 import java.util.Random;
 
 public class TrieDictionary extends Dictionary {
-    public static final int VI_EN = 0;
-    public static final int EN_VI = 1;
-
     private Trie trie = new Trie();
     private Random rand = new Random();
 

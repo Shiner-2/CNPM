@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Dictionary {
+    public static final int VI_EN = 0;
+    public static final int EN_VI = 1;
+
     public Dictionary getDictionary_from_file(File file) throws IOException {
         if (Helper.get_extension(file).equals("txt")) {
             return new TrieDictionary(file);
