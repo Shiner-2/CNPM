@@ -30,10 +30,10 @@ public class WordPictureGame {
         }
     }
 
-    private String getWord() {
+    public String getWord() {
         return words.get(rand.nextInt(words.size()));
     }
-    private Image getImage(String s) throws IOException {
+    public Image getImage(String s) throws IOException {
         String newURL = "https://www.googleapis.com/customsearch/v1" +
                 "?key=AIzaSyDvED3p1m0Y2l2TE8e5-DbBOkp1O-fkAn8" +
                 "&cx=f4316832967884fe0" +

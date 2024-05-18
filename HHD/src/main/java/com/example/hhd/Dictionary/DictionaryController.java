@@ -32,10 +32,12 @@ public class DictionaryController extends AnchorPane {
     Dictionary data = AppController.data;
 
     static Dictionary dataVI_EN;
+    static Dictionary dataEN_VI;
 
     static {
         try {
             dataVI_EN = new TrieDictionary(Dictionary.VI_EN, true);
+            dataEN_VI = AppController.data;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -72,7 +74,7 @@ public class DictionaryController extends AnchorPane {
     private void onSwitch() {
         mode ^= 1;
         if (mode == Dictionary.EN_VI) {
-            data = AppController.data;
+            data = dataEN_VI;
             wordDefinition.getChildren().clear();
             userInputWord.setText("");
             recommendWord.getItems().clear();
@@ -90,7 +92,7 @@ public class DictionaryController extends AnchorPane {
         inputText = inputText.toLowerCase(Locale.ROOT);
 
         recommendWord.getItems().clear();
-        recommendWord.getItems().addAll(data.search(inputText));
+        recommendWord.getItems().addAll(data.searchWithRecentWord(inputText));
         recommendWord.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Word item, boolean empty) {
@@ -108,6 +110,7 @@ public class DictionaryController extends AnchorPane {
             curString = currentWord.getWord();
             wordDefinition.getChildren().clear();
             showWordDefinition(currentWord);
+            data.addRecentWord(curString);
         });
     }
 

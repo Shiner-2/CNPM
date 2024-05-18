@@ -25,6 +25,14 @@ public abstract class Dictionary {
 
     public abstract ArrayList<Word> search(String target);
 
+    public abstract ArrayList<Word> searchWithRecentWord(String target);
+
+    public abstract void loadRecentWord(String data);
+
+    public abstract void addRecentWord(String word);
+
+    public abstract String getRecentWord();
+
     public abstract boolean contains(String word_target);
 
     public abstract ArrayList<Word> allWordList();

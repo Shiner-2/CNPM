@@ -11,7 +11,7 @@ import java.util.Random;
 public class TrieDictionary extends Dictionary {
     private Trie trie = new Trie();
     private Random rand = new Random();
-
+    private RecentWord recentWord = new RecentWord();
     private File toExportFile = new File("HHD/src/main/resources/data/dictionary.txt");
 
     public TrieDictionary() throws IOException {
@@ -102,6 +102,41 @@ public class TrieDictionary extends Dictionary {
     @Override
     public ArrayList<Word> search(String target) {
         return trie.search_word(target, 20);
+    }
+
+    @Override
+    public ArrayList<Word> searchWithRecentWord(String target) {
+        ArrayList<String> recent = recentWord.get(target);
+        ArrayList<Word> allWord = search(target);
+
+        ArrayList<Word> result = new ArrayList<>();
+
+        for (String w : recent) {
+            result.add(trie.search_word(w, 1).get(0));
+        }
+
+        for (Word w : allWord) {
+            if (!result.contains(w)) {
+                result.add(w);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public void loadRecentWord(String data) {
+        recentWord.importWord(data);
+    }
+
+    @Override
+    public void addRecentWord(String word) {
+        recentWord.addWord(word);
+    }
+
+    @Override
+    public String getRecentWord() {
+        return recentWord.exportWord();
     }
 
     public ArrayList<Word> allWordList() {

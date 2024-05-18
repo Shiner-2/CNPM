@@ -55,6 +55,22 @@ public class WordPictureController extends AnchorPane implements Initializable {
         }
     }
 
+//    public WordPictureController(String gameData) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/WordPicture/WordPicture.fxml"));
+//        fxmlLoader.setRoot(this);
+//        fxmlLoader.setController(this);
+//        try {
+//            fxmlLoader.load();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
+//
+//        score = Helper.getData("score", gameData);
+//        Point.setText(String.valueOf(score * 100));
+//        String w = Helper.getData("word", gameData);
+//        q = new Pair<>(w, data.getImage(w));
+//    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         data = new WordPictureGame();
