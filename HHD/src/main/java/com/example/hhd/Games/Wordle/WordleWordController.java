@@ -31,6 +31,10 @@ public class WordleWordController extends VBox implements Initializable {
         return cur;
     }
 
+    public void setCur(String cur) {
+        this.cur = cur;
+    }
+
     public HBox getWordleWordContainer() {
         return WordleWordContainer;
     }
@@ -90,7 +94,6 @@ public class WordleWordController extends VBox implements Initializable {
     public void setWord(String s) {
         s = s.toUpperCase();
         if(s.length()>5 || s == null) {
-            System.out.println("something gone wrong");
             return;
         }
         for(int i = 0; i < s.length(); i++) {
@@ -122,6 +125,7 @@ public class WordleWordController extends VBox implements Initializable {
                             checkWord();
                             keyEvent.consume();
                             WordleController.nextWord();
+                            //WordleController.WordleToData();
                             return;
                         } else{
                             if (cur.length() != sz) {
@@ -159,5 +163,7 @@ public class WordleWordController extends VBox implements Initializable {
         });
     }
 
+    public void LoadWord(String s) {
 
+    }
 }

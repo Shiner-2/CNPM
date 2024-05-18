@@ -115,9 +115,20 @@ public class SideBar extends AnchorPane implements Initializable {
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(AppController.games);
     }
+
     public static void loadTranslator() {
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(AppController.translator);
+    }
+
+    public static void loadHome() {
+        AppController.mainscreen.getChildren().clear();
+        AppController.mainscreen.getChildren().add(AppController.home);
+    }
+
+    public static void loadUser() {
+        AppController.mainscreen.getChildren().clear();
+        AppController.mainscreen.getChildren().add(AppController.user);
     }
 
 
@@ -129,6 +140,10 @@ public class SideBar extends AnchorPane implements Initializable {
         header.getChildren().add(head1);
         head1.setSelected(true);
         head1.setHover();
+        head1.setOnMouseClicked(event -> {
+            loadHome();
+            head1.onClick();
+        });
         curSelect = head1;
 
         SideBarItem body1 = new SideBarItem("HHD/src/main/resources/img/UI_button/book.png",
@@ -152,13 +167,15 @@ public class SideBar extends AnchorPane implements Initializable {
 
         body.getChildren().addAll(body1,body2,body3);
 
-        SideBarItem foot1 = new SideBarItem("HHD/src/main/resources/img/UI_button/setting.png",
-                "HHD/src/main/resources/img/UI_button/setting1.png", 70,70,"Setting");
-        SideBarItem foot2 = new SideBarItem("HHD/src/main/resources/img/UI_button/home.png",
-                "HHD/src/main/resources/img/UI_button/home1.png", 70,70,"User");
-        foot2.setDisable(true);
+        SideBarItem foot = new SideBarItem("HHD/src/main/resources/img/UI_button/user.png",
+                "HHD/src/main/resources/img/UI_button/user1.png", 70,70,"User");
 
-        footer.getChildren().addAll(foot1,foot2);
+        foot.setOnMouseClicked(event -> {
+            loadUser();
+            foot.onClick();
+        });
+
+        footer.getChildren().addAll(foot);
 
 
         container.setOnMouseEntered(event -> {

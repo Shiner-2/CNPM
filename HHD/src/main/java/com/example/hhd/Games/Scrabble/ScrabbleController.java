@@ -840,5 +840,5 @@ public class ScrabbleController extends AnchorPane{
                 ,ScrabbleContainer.localToScreen(0,0).getX()
                 ,ScrabbleContainer.localToScreen(0,0).getY());
     }
-}
 
+}
