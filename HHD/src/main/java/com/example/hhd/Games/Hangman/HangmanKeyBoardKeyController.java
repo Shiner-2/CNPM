@@ -45,4 +45,8 @@ public class HangmanKeyBoardKeyController extends VBox {
     public void setKey(String s) {
         HangmanKeyBoardKeykey.setText(s);
     }
+
+    public String getKey() {
+        return HangmanKeyBoardKeykey.getText();
+    }
 }

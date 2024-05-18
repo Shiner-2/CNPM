@@ -68,9 +68,11 @@ public class HangmanController extends AnchorPane implements Initializable {
     private Integer hiddencnt = 1;
 
     private String HiddenWord = "NULL";
-    private List<String> IdList = new ArrayList<>();
     private Dictionary data = AppController.data;
     private Popup popup = new Popup();
+
+    private ArrayList<Node> failure = new ArrayList<>();
+    private String GuessedLetter = "";
 
     public HangmanController() throws IOException {
         HiddenWord = data.randomWord(10).getWord();
@@ -95,8 +97,8 @@ public class HangmanController extends AnchorPane implements Initializable {
         HiddenWord = HiddenWord.toUpperCase();
         wrongcnt = -1;
         correctcnt = 0;
+        GuessedLetter = "";
         hiddencnt = 1;
-        IdList.clear();
 
         HangmanFail0.setVisible(false);
         HangmanFail.setVisible(false);
@@ -115,9 +117,7 @@ public class HangmanController extends AnchorPane implements Initializable {
         for(int i = 0; i < HiddenWord.length(); i++) {
             String id = "HiddenWord" + (i+1);
             HangmanHiddenLetterController lt = new HangmanHiddenLetterController();
-            lt.setId(id);
             lt.hiden = String.valueOf(HiddenWord.charAt(i));
-            IdList.add(id);
             HangmanHiddenWordContainer.getChildren().add(lt);
 
             for(int j = i-1 ; j >= 0 ; j--) {
@@ -134,11 +134,10 @@ public class HangmanController extends AnchorPane implements Initializable {
             char c = (char) ('A'+i);
             HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
             key.setKey(String.valueOf(c));
-            key.setId("HangmanKey" + c);
             key.setOnMouseClicked(e->{
                 if(check(c)) key.Correct();
                 else key.Wrong();
-                Guess(String.valueOf(c),e);
+                Guess(String.valueOf(c));
             });
             HangmanKeyBoardContainer1.getChildren().add(key);
         }
@@ -146,11 +145,10 @@ public class HangmanController extends AnchorPane implements Initializable {
             char c = (char) ('A'+i);
             HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
             key.setKey(String.valueOf(c));
-            key.setId("HangmanKey" + c);
             key.setOnMouseClicked(e->{
                 if(check(c)) key.Correct();
                 else key.Wrong();
-                Guess(String.valueOf(c),e);
+                Guess(String.valueOf(c));
             });
             HangmanKeyBoardContainer2.getChildren().add(key);
         }
@@ -158,11 +156,10 @@ public class HangmanController extends AnchorPane implements Initializable {
             char c = (char) ('A'+i);
             HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
             key.setKey(String.valueOf(c));
-            key.setId("HangmanKey" + c);
             key.setOnMouseClicked(e->{
                 if(check(c)) key.Correct();
                 else key.Wrong();
-                Guess(String.valueOf(c),e);
+                Guess(String.valueOf(c));
             });
             HangmanKeyBoardContainer3.getChildren().add(key);
         }
@@ -180,7 +177,7 @@ public class HangmanController extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GamesController.setHoverEffect(imgV1,imgV2,imgV3);
-        Replay();
+        loadData();
         AnchorPane anchorPane = new AnchorPane();
         try {
             HangmanInfoController info = new HangmanInfoController();
@@ -193,6 +190,14 @@ public class HangmanController extends AnchorPane implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        failure.add(HangmanFail0);
+        failure.add(HangmanFail1);
+        failure.add(HangmanFail2);
+        failure.add(HangmanFail3);
+        failure.add(HangmanFail4);
+        failure.add(HangmanFail5);
+        failure.add(HangmanFail6);
+        failure.add(HangmanFail);
     }
 
     private void UpdateFailCount() {
@@ -266,6 +271,7 @@ public class HangmanController extends AnchorPane implements Initializable {
     }
 
     private boolean check(char c) {
+        GuessedLetter += String.valueOf(c);
         for(int i = 0 ; i < HiddenWord.length(); i++){
             if(c == HiddenWord.charAt(i)) {
                 correctcnt++;
@@ -278,17 +284,133 @@ public class HangmanController extends AnchorPane implements Initializable {
         return false;
     }
 
-    public void Guess(String s, MouseEvent event) {
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+    public void Guess(String s) {
         s = s.toUpperCase();
+
+        for(Node node: HangmanHiddenWordContainer.getChildren()) {
+            if (node instanceof HangmanHiddenLetterController) {
+                if (((HangmanHiddenLetterController) node).hiden.equals(s)) {
+                    ((HangmanHiddenLetterController) node).setLetter(s);
+                }
+            }
+        }
+
+        HangmanToData();
+    }
+
+    public void HangmanToData() {
+        //TODO: setData
+        String s = "";
+        s = s + HiddenWord + "\n";
+        s = s + GuessedLetter;
+//        System.out.println(s);
+    }
+
+    public void loadData() {
+        // TODO: getData
+        String s = "ABCDEEDCBA\n" + "BHKIL";
+        String[] dat = s.split("\n");
+        String tmp;
+        if (dat[0].length()<10) {
+            HiddenWord = data.randomWord(10).getWord();
+            tmp = "";
+        } else{
+            HiddenWord = dat[0];
+            tmp = dat[1];
+        }
+        HiddenWord = HiddenWord.toUpperCase();
+        wrongcnt = -1;
+        correctcnt = 0;
+        hiddencnt = 1;
+
+        HangmanFail0.setVisible(false);
+        HangmanFail.setVisible(false);
+        HangmanFail1.setVisible(false);
+        HangmanFail2.setVisible(false);
+        HangmanFail3.setVisible(false);
+        HangmanFail4.setVisible(false);
+        HangmanFail5.setVisible(false);
+        HangmanFail6.setVisible(false);
+
+
+        HangmanHiddenWordContainer.getChildren().clear();
+        HangmanKeyBoardContainer1.getChildren().clear();
+        HangmanKeyBoardContainer2.getChildren().clear();
+        HangmanKeyBoardContainer3.getChildren().clear();
+
         for(int i = 0; i < HiddenWord.length(); i++) {
-            String cur = String.valueOf(HiddenWord.charAt(i));
-            if (cur.equals(s)) {
-                for(Node node: HangmanHiddenWordContainer.getChildren()) {
-                    if(node instanceof HangmanHiddenLetterController) {
-                        if (node.getId().equals(IdList.get(i))) {
-                            ((HangmanHiddenLetterController) node).setLetter(cur);
-                        }
+            HangmanHiddenLetterController lt = new HangmanHiddenLetterController();
+            lt.hiden = String.valueOf(HiddenWord.charAt(i));
+            HangmanHiddenWordContainer.getChildren().add(lt);
+
+            for(int j = i-1 ; j >= 0 ; j--) {
+                if(HiddenWord.charAt(i)==HiddenWord.charAt(j)){
+                    break;
+                }
+                if(j==0) {
+                    hiddencnt++;
+                }
+            }
+        }
+
+        for(int i = 0; i < 9; i++) {
+            char c = (char) ('A'+i);
+            HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
+            key.setKey(String.valueOf(c));
+            key.setOnMouseClicked(e->{
+                if(check(c)) key.Correct();
+                else key.Wrong();
+                Guess(String.valueOf(c));
+            });
+            HangmanKeyBoardContainer1.getChildren().add(key);
+        }
+        for(int i = 9; i < 18; i++) {
+            char c = (char) ('A'+i);
+            HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
+            key.setKey(String.valueOf(c));
+            key.setOnMouseClicked(e->{
+                if(check(c)) key.Correct();
+                else key.Wrong();
+                Guess(String.valueOf(c));
+            });
+            HangmanKeyBoardContainer2.getChildren().add(key);
+        }
+        for(int i = 18; i < 26; i++) {
+            char c = (char) ('A'+i);
+            HangmanKeyBoardKeyController key = new HangmanKeyBoardKeyController();
+            key.setKey(String.valueOf(c));
+            key.setOnMouseClicked(e->{
+                if(check(c)) key.Correct();
+                else key.Wrong();
+                Guess(String.valueOf(c));
+            });
+            HangmanKeyBoardContainer3.getChildren().add(key);
+        }
+
+        HangmanFailCountLabel.setText("You have failed 0/8");
+        for(int i = 0; i < tmp.length(); i++) {
+            Guess(String.valueOf(tmp.charAt(i)));
+            if(check(tmp.charAt(i))){
+
+            }
+            for(Node key: HangmanKeyBoardContainer1.getChildren()) {
+                if (key instanceof HangmanKeyBoardKeyController) {
+                    if(((HangmanKeyBoardKeyController) key).getKey().equals(String.valueOf(tmp.charAt(i)))) {
+                        ((HangmanKeyBoardKeyController) key).Chosed();
+                    }
+                }
+            }
+            for(Node key: HangmanKeyBoardContainer2.getChildren()) {
+                if (key instanceof HangmanKeyBoardKeyController) {
+                    if(((HangmanKeyBoardKeyController) key).getKey().equals(String.valueOf(tmp.charAt(i)))) {
+                        ((HangmanKeyBoardKeyController) key).Chosed();
+                    }
+                }
+            }
+            for(Node key: HangmanKeyBoardContainer3.getChildren()) {
+                if (key instanceof HangmanKeyBoardKeyController) {
+                    if(((HangmanKeyBoardKeyController) key).getKey().equals(String.valueOf(tmp.charAt(i)))) {
+                        ((HangmanKeyBoardKeyController) key).Chosed();
                     }
                 }
             }

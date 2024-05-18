@@ -215,7 +215,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
         Question
         Ans
      */
-    public String QuizToData() {
+    public void QuizToData() {
         String s = "";
         s = s + questionCounter + "\n";
         s = s + score + "\n";
@@ -227,9 +227,8 @@ public class QuizGameController extends AnchorPane implements Initializable {
         s = s + curQuestion + "\n";
         s = s + curAns;
         // TODO: update gameData
-        return s;
     }
-    
+
     public void loadData() {
         // TODO: getData
         String s = "9\n" +
