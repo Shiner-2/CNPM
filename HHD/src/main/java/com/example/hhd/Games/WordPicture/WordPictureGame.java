@@ -18,16 +18,19 @@ import java.util.Random;
 public class WordPictureGame {
     private final Random rand = new Random();
 
-    private String getWord() {
-        List<String> words = new ArrayList<>();
+    private List<String> words = new ArrayList<>();
+    public WordPictureGame() {
         try {
-            List<String> lines = Files.readAllLines(Path.of("src/main/resources/data/WordPictureList.txt"), StandardCharsets.UTF_8);
+            List<String> lines = Files.readAllLines(Path.of("HHD/src/main/resources/data/WordPictureList.txt"), StandardCharsets.UTF_8);
             for (String line : lines) {
                 words.add(line.strip());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getWord() {
         return words.get(rand.nextInt(words.size()));
     }
     private Image getImage(String s) throws IOException {
@@ -48,13 +51,13 @@ public class WordPictureGame {
 
         String output;
 
-        System.out.println(s);
-        System.out.println("Output from Server .... \n");
+//        System.out.println(s);
+//        System.out.println("Output from Server .... \n");
         while ((output = br.readLine()) != null) {
 
             if(output.contains("\"thumbnailLink\": \"")){
                 String link=output.substring(output.indexOf("\"thumbnailLink\": \"")+("\"thumbnailLink\": \"").length(), output.indexOf("\","));
-                System.out.println(link);       //Will print the google search links
+//                System.out.println(link);       //Will print the google search links
 
                 return new Image(link);
             }

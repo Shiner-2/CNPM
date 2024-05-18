@@ -51,7 +51,7 @@ public class TrieDictionary extends Dictionary {
     public void importFromFile(File file) throws IOException {
         for (Word w : Helper.getWordFromFile(file)) {
             insert(w);
-            System.out.println(w.getWord());
+//            System.out.println(w.getWord());
         }
     }
 

@@ -18,6 +18,8 @@ module com.example.hhd {
     opens com.example.hhd.Games.Quiz to javafx.fxml;
     exports com.example.hhd.Games.Scrabble;
     opens com.example.hhd.Games.Scrabble to javafx.fxml;
+    exports com.example.hhd.Games.WordPicture;
+    opens com.example.hhd.Games.WordPicture to javafx.fxml;
     exports com.example.hhd.Dictionary;
     opens com.example.hhd.Dictionary to javafx.fxml;
     exports com.example.hhd.TTS;

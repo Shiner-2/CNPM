@@ -5,6 +5,7 @@ import com.example.hhd.AppController;
 import com.example.hhd.Games.Hangman.HangmanController;
 import com.example.hhd.Games.Quiz.QuizGameController;
 import com.example.hhd.Games.Scrabble.ScrabbleController;
+import com.example.hhd.Games.WordPicture.WordPictureController;
 import com.example.hhd.Games.Wordle.WordleController;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
@@ -30,6 +31,8 @@ public class GamesController extends AnchorPane {
     private ScrabbleController scrabble = new ScrabbleController();
     private QuizGameController quiz = new QuizGameController();
     private HangmanController hangman = new HangmanController();
+
+    private WordPictureController wordpicture = new WordPictureController();
 
     public GamesController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
@@ -186,5 +189,8 @@ public class GamesController extends AnchorPane {
         AppController.mainscreen.getChildren().add(hangman);
     }
 
-
+    public void LoadWordPicture(Event event) throws IOException {
+        AppController.mainscreen.getChildren().clear();
+        AppController.mainscreen.getChildren().add(wordpicture);
+    }
 }
