@@ -298,6 +298,10 @@ public class HangmanController extends AnchorPane implements Initializable {
         HangmanToData();
     }
 
+    /*
+        HiddenWord
+        GuessedLetter
+     */
     public void HangmanToData() {
         //TODO: setData
         String s = "";
