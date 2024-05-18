@@ -1,0 +1,6 @@
+#HangmanGameScreen {
+    -fx-background-image:url('../../img/Hangman/background.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}

@@ -1,0 +1,7 @@
+HBox {
+    -fx-background-color:  #2e2e3a;
+}
+
+HBox:hover {
+    -fx-background-color:  #3b8484;
+}
