@@ -45,6 +45,8 @@ public class DBHelper {
                 ProfileID INTEGER PRIMARY KEY AUTOINCREMENT,
                 UserID INTEGER,
                 DisplayName TEXT,
+                RecentWord_Vi_En TEXT,
+                RecentWord_En_Vi TEXT,
                 FOREIGN KEY(UserID) REFERENCES Users(UserID)
             );
             """,

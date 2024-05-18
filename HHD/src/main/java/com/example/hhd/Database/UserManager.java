@@ -117,11 +117,11 @@ public class UserManager {
      * @param newDisplayName new display name to set
      * @return true if the profile is updated successfully, false otherwise
      */
-    public static boolean updateProfile(String username, String newDisplayName) {
-        String sql = "UPDATE UserProfiles SET DisplayName = ? WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
+    public static boolean updateProfile(String username, String newValue, String colName) {
+        String sql = "UPDATE UserProfiles SET " + colName + " = ? WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
         try (Connection conn = DBHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, newDisplayName);
+            pstmt.setString(1, newValue);
             pstmt.setString(2, username);
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
@@ -210,13 +210,14 @@ public class UserManager {
      * @return String containing the display name or null if profile not found
      */
     public static String getProfile(String username) {
-        String sql = "SELECT DisplayName FROM UserProfiles WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
+        String sql = "SELECT DisplayName, RecentWord_Vi_En, RecentWord_En_Vi FROM UserProfiles WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
         try (Connection conn = DBHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getString("DisplayName");
+                    return String.format("DisplayName: %s, RecentWord_Vi_En: %s, RecentWord_En_Vi: %s",
+                            rs.getString("DisplayName"), rs.getString("RecentWord_Vi_En"), rs.getString("RecentWord_En_Vi"));
                 }
             }
         } catch (SQLException e) {
