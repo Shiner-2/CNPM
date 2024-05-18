@@ -11,9 +11,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: linear-gradient(to bottom,  #348ce3, #bed3e8);" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="WordleGameScreen" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: linear-gradient(to bottom,  #348ce3, #bed3e8);" stylesheets="@../../../../../CSS/Wordle/setBackground.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="header" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1020.0" style="-fx-border-width: 0 0 5 0; -fx-background-color: EADBC8; -fx-border-color: black;">
+      <AnchorPane fx:id="header" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1020.0" style="-fx-border-width: 0 0 5 0; -fx-background-color: #d8db9e; -fx-border-color: black;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="8.0" text="Wordle">
                <font>
@@ -62,6 +62,6 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <VBox fx:id="WordleContainer" alignment="CENTER" layoutX="297.0" layoutY="128.0" minHeight="20.0" prefWidth="425.0" style="-fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e);" />
+      <VBox fx:id="WordleContainer" alignment="CENTER" layoutX="439.0" layoutY="130.0" minHeight="20.0" prefWidth="425.0" />
    </children>
 </fx:root>

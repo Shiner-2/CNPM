@@ -1,0 +1,7 @@
+#container:hover {
+    -fx-background-color: transparent;
+}
+
+#container:hover #name{
+    -fx-text-fill: #3b8484;
+}

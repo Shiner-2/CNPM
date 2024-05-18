@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" type="VBox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" type="VBox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="HangmanKeyBoardKeykey" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="30.0" style="-fx-border-color: black;" text="H" textAlignment="CENTER">
+      <Label fx:id="HangmanKeyBoardKeykey" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" text="H" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

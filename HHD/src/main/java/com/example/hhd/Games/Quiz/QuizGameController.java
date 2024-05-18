@@ -1,6 +1,7 @@
 package com.example.hhd.Games.Quiz;
 
 import com.example.hhd.App;
+import com.example.hhd.Games.GamesController;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -23,6 +25,8 @@ public class QuizGameController extends AnchorPane implements Initializable {
     QuizGame gameData;
 
     @FXML
+    private Label QuestionNumberCnt;
+    @FXML
     private Label question;
     @FXML
     private ImageView QuizNextBtn;
@@ -30,6 +34,13 @@ public class QuizGameController extends AnchorPane implements Initializable {
     private Label Point;
     @FXML
     private Button choiceA, choiceB, choiceC, choiceD;
+    private String normalColor = "#524c49";
+    @FXML
+    private ImageView imgV1;
+    @FXML
+    private ImageView imgV2;
+    @FXML
+    private ImageView imgV3;
 
     public QuizGameController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Quiz/Quiz.fxml"));
@@ -46,6 +57,13 @@ public class QuizGameController extends AnchorPane implements Initializable {
         SideBar.loadGames();
     }
 
+    public void replay() {
+        questionCounter = 1;
+        score = 0;
+        setQuestion();
+        initGame();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -53,38 +71,51 @@ public class QuizGameController extends AnchorPane implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        initGame();
+        GamesController.setHoverEffect(imgV1,imgV2,imgV3);
+        imgV1.setOnMouseClicked(event -> {
+            SideBar.loadGames();
+        });
+        imgV2.setOnMouseClicked(event -> {
+            replay();
+        });
+        loadData();
+    }
+
+    private int questionCounter = 1;
+    public static int score = 0;
+    private static final int questionMax = 10;
+    private String curQuestion;
+    private String curAns;
+
+    public void initGame() {
         QuizNextBtn.setDisable(true);
         QuizNextBtn.setVisible(false);
         Point.setText(""+score*100);
-        initGame();
-        setQuestion();
-    }
-
-    private int questionCounter = 0;
-    public static int score = 0;
-    private static final int questionMax = 10;
-
-    public void initGame() {
+        QuestionNumberCnt.setText(String.format("%d/10",questionCounter));
         gameData.setGame();
     }
-    Question currentQuestion;
+    Question currentQuestion = new Question();
 
     // to do: link this to result screen
     public void showResult() {
+        QuizNextBtn.setDisable(true);
+        QuizNextBtn.setVisible(false);
 
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Game Over");
+        a.setContentText("You score " + score*100 + " point!!!");
+        a.show();
     }
 
     public void setQuestion() {
-        ++ questionCounter;
-
-        if (questionCounter > 10) {
-            showResult();
-            return;
-        }
+        QuestionNumberCnt.setText(String.format("%d/10",questionCounter));
 
         Question q = gameData.getQuestion();
         currentQuestion = q;
-        question.setText(q.getQuestion());
+        curQuestion = q.getQuestion();
+        curAns = q.getAnswer();
+        question.setText(curQuestion);
         question.setWrapText(true);
         String[] choices = q.getChoices();
         choiceA.setText(choices[0]);
@@ -94,10 +125,10 @@ public class QuizGameController extends AnchorPane implements Initializable {
 
         QuizNextBtn.setDisable(true);
         QuizNextBtn.setVisible(false);
-        choiceA.setStyle("-fx-background-color: #98b094;");
-        choiceB.setStyle("-fx-background-color: #98b094;");
-        choiceC.setStyle("-fx-background-color: #98b094;");
-        choiceD.setStyle("-fx-background-color: #98b094;");
+        choiceA.setStyle("");
+        choiceB.setStyle("");
+        choiceC.setStyle("");
+        choiceD.setStyle("");
         choiceA.setDisable(false);
         choiceB.setDisable(false);
         choiceC.setDisable(false);
@@ -107,10 +138,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
     @FXML
     public void handleChoiceA(ActionEvent event) {
         if (choiceA.getText().equals(currentQuestion.getAnswer())) {
-            System.out.println("Correct answer");
             score ++;
-        } else {
-            System.out.println("Wrong answer");
         }
         showRes();
     }
@@ -118,10 +146,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
     @FXML
     public void handleChoiceB(ActionEvent event) {
         if (choiceB.getText().equals(currentQuestion.getAnswer())) {
-            System.out.println("Correct answer");
             score ++;
-        } else {
-            System.out.println("Wrong answer");
         }
         showRes();
     }
@@ -129,10 +154,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
     @FXML
     public void handleChoiceC(ActionEvent event) {
         if (choiceC.getText().equals(currentQuestion.getAnswer())) {
-            System.out.println("Correct answer");
             score ++;
-        } else {
-            System.out.println("Wrong answer");
         }
         showRes();
     }
@@ -140,10 +162,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
     @FXML
     public void handleChoiceD(ActionEvent event) {
         if (choiceD.getText().equals(currentQuestion.getAnswer())) {
-            System.out.println("Correct answer");
             score ++;
-        } else {
-            System.out.println("Wrong answer");
         }
         showRes();
     }
@@ -179,5 +198,59 @@ public class QuizGameController extends AnchorPane implements Initializable {
         choiceB.setDisable(true);
         choiceC.setDisable(true);
         choiceD.setDisable(true);
+
+        questionCounter++;
+        if(questionCounter>10){
+            showResult();
+        }
+    }
+
+    /*
+        questionCounter
+        Score
+        choiceA
+        choiceB
+        choiceC
+        choiceD
+        Question
+        Ans
+     */
+    public void QuizToData() {
+        String s = "";
+        s = s + questionCounter + "\n";
+        s = s + score + "\n";
+
+        s = s + choiceA.getText() + "\n";
+        s = s + choiceB.getText() + "\n";
+        s = s + choiceC.getText() + "\n";
+        s = s + choiceD.getText() + "\n";
+        s = s + curQuestion + "\n";
+        s = s + curAns;
+        // TODO: update gameData
+    }
+
+    public void loadData() {
+        // TODO: getData
+        String s = "9\n" +
+                "2\n" +
+                "zealot\n" +
+                "nebulous\n" +
+                "facade\n" +
+                "hallowed\n" +
+                "Which word best matches the following description? 'an outward appearance that is maintained to conceal a less pleasant reality'\n" +
+                "facade";
+        String[] data = s.split("\n");
+        questionCounter = Integer.parseInt(data[0]);
+        score = Integer.parseInt(data[1]);
+        choiceA.setText(data[2]);
+        choiceB.setText(data[3]);
+        choiceC.setText(data[4]);
+        choiceD.setText(data[5]);
+        currentQuestion.setQuestion(data[6]);
+        currentQuestion.setAnswer(data[7]);
+        question.setText(data[6]);
+        question.setWrapText(true);
+        Point.setText(""+score*100);
+        QuestionNumberCnt.setText(String.format("%d/10",questionCounter));
     }
 }

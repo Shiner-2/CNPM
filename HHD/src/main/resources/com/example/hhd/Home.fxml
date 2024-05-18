@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #d8db9e;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="90.0" fitWidth="400.0" layoutX="338.0" layoutY="34.0">
+         <image>
+            <Image url="@../../../img/Home/logo.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="86.0" layoutY="153.0" prefHeight="470.0" prefWidth="543.0" style="-fx-background-color: #7fa832; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ListView fx:id="EnViRecent" layoutX="35.0" layoutY="132.0" prefHeight="296.0" prefWidth="199.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ListView>
+            <ListView fx:id="ViEnRecent" layoutX="310.0" layoutY="132.0" prefHeight="296.0" prefWidth="199.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ListView>
+            <Line endX="1.20001220703125" endY="308.6666259765625" layoutX="270.0" layoutY="121.0" startX="1.20001220703125" startY="9.466644287109375" />
+            <Label layoutX="125.0" layoutY="34.0" text="Recent Search">
+               <font>
+                  <Font name="Arial Black" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER" layoutX="692.0" layoutY="148.0" prefHeight="200.0" prefWidth="265.0" style="-fx-background-color: pink; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="WelcomeMessage" alignment="CENTER" contentDisplay="CENTER" prefHeight="154.0" prefWidth="227.0" text="Welcom User_name to our App" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.09157894551753998" green="0.2976315915584564" blue="0.9157894849777222" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9200000166893005" green="0.03680000081658363" blue="0.7597238421440125" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="684.0" layoutY="421.0" onMouseClicked="#NewJoke" prefHeight="200.0" prefWidth="265.0" style="-fx-background-color: #f7f54d; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="Joke" alignment="CENTER" contentDisplay="CENTER" prefHeight="154.0" prefWidth="227.0" text="Joke" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</fx:root>

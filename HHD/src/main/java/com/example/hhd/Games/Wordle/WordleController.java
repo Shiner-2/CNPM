@@ -2,23 +2,18 @@ package com.example.hhd.Games.Wordle;
 
 import com.example.hhd.*;
 import com.example.hhd.Algo.Dictionary;
+import com.example.hhd.Games.GamesController;
 import com.example.hhd.SideBar.SideBar;
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -118,73 +113,13 @@ public class WordleController extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NewGame();
+        LoadData();
 
-        imgV1.setOnMouseEntered(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Colored Square Buttons/Home col_Square Button.png");
-                Image img = new Image(fis);
-                imgV1.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        imgV1.setOnMouseExited(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Square Buttons/Home Square Button.png");
-                Image img = new Image(fis);
-                imgV1.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-
-        imgV2.setOnMouseEntered(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Colored Square Buttons/Return col_Square Button.png");
-                Image img = new Image(fis);
-                imgV2.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        imgV2.setOnMouseExited(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Square Buttons/Return Square Button.png");
-                Image img = new Image(fis);
-                imgV2.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-
-        imgV3.setOnMouseEntered(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Colored Square Buttons/Info col_Square Button.png");
-                Image img = new Image(fis);
-                imgV3.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        imgV3.setOnMouseExited(event -> {
-            try {
-                FileInputStream fis = new FileInputStream("HHD/src/main/resources/img/Square Buttons/Square Buttons/Info Square Button.png");
-                Image img = new Image(fis);
-                imgV3.setImage(img);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        GamesController.setHoverEffect(imgV1,imgV2,imgV3);
 
         AnchorPane anchorPane = new AnchorPane();
         try {
-            InfoController info = new InfoController();
+            WordleInfoController info = new WordleInfoController();
             anchorPane.getChildren().add(info);
             ImageView imageView = info.getImg();
             imageView.setOnMouseClicked(event -> {
@@ -196,4 +131,51 @@ public class WordleController extends AnchorPane implements Initializable {
         }
 
     }
+
+    /*
+        Board 6 line
+        HiddenWord
+     */
+    public static void WordleToData() {
+        // TODO: loadData
+        String s = "";
+        for(int i = 0; i < 6; i++) {
+            s = s + board.get(i).getCur() + "\n";
+        }
+        s = s + HiddenWord + "\n";
+        //System.out.println(s);
+    }
+
+    public void LoadData() {
+        // TODO: getData
+        String s = "hello\n" +
+                "happy\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "dense";
+        String[] dat = s.split("\n");
+        board.clear();
+        WordleContainer.getChildren().clear();
+        HiddenWord = dat[6];
+        GameState = false;
+        for(int i = 0; i < 6; i++) {
+            WordleWordController Word = new WordleWordController();
+            Word.setHiddenWord(HiddenWord);
+            board.add(Word);
+            WordleContainer.getChildren().add(Word);
+        }
+
+        for(int i = 0; i < 6 ; i++) {
+            if(dat[i].length() == 5) {
+                board.get(i).setCur(dat[i]);
+                board.get(i).checkWord();
+                WordleController.nextWord();
+            }
+        }
+
+        onLoad();
+    }
+
 }

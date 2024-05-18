@@ -21,18 +21,32 @@ public class HangmanKeyBoardKeyController extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        this.setStyle("-fx-background-color: cyan;");
+        this.setStyle("-fx-background-color: #5d64b5;");
     }
 
     public void Correct() {
-        this.setStyle("-fx-background-color: green;");
+        Chosed();
     }
 
     public void Wrong() {
-        this.setStyle("-fx-background-color: red;");
+        Chosed();
+    }
+
+    public void Chosed() {
+        this.setStyle("-fx-background-color: #a7a7c4;");
+        this.setDisable(true);
+    }
+
+    public void UnChosed() {
+        this.setStyle("-fx-background-color: #5d64b5;");
+        this.setDisable(false);
     }
 
     public void setKey(String s) {
         HangmanKeyBoardKeykey.setText(s);
+    }
+
+    public String getKey() {
+        return HangmanKeyBoardKeykey.getText();
     }
 }

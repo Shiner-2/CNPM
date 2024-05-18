@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +57,19 @@ public class AppController implements Initializable {
         }
     }
 
+    public static HomeController home = new HomeController();
+
     public static TranslatorController translator = new TranslatorController();
+
+    public static UserController user;
+
+    static {
+        try {
+            user = new UserController();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public AppController() throws IOException {
         //data = new TrieDictionary();
@@ -67,43 +80,10 @@ public class AppController implements Initializable {
         sideBar = new SideBar();
         SideBarContainer.getChildren().add(sideBar);
         mainscreen = MainScreen;
+        mainscreen.getChildren().clear();
+        mainscreen.getChildren().add(home);
     }
 
-
-//    public void LoadGames(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Games");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    public void LoadDictionary(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Dictionary/Dictionary.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Dictionary");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    public void LoadTranslator(ActionEvent event) throws IOException {
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(App.class.getResource("Translator.fxml"));
-//        scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Translator");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//
-//    @FXML
-//    public void about(Event event) {
-//        Alert info = new Alert(Alert.AlertType.INFORMATION);
-//        info.setTitle("About us");
-//        info.setContentText("This project is made for education purpose, by HHD group in UET university");
-//        info.show();
-//    }
 
 
 }

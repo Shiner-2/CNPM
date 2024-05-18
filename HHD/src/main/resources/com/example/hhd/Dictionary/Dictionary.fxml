@@ -28,10 +28,10 @@
          </cursor></Button>
         <ScrollPane layoutX="280.0" layoutY="80.0" style="-fx-background-color: white;">
          <content>
-            <TextFlow fx:id="wordDefinition" prefHeight="602.0" prefWidth="586.0" style="-fx-border-color: black; -fx-background-color: white;" />
+            <TextFlow fx:id="wordDefinition" prefHeight="602.0" prefWidth="697.0" style="-fx-border-color: black; -fx-background-color: white;" />
          </content>
         </ScrollPane>
-        <Button fx:id="SpeakBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="481.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#speak" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-radius: 20;" textFill="WHITE">
+        <Button fx:id="SpeakBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="471.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#speak" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-radius: 20;" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -46,53 +46,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
         </Button>
-        <ImageView fitHeight="39.0" fitWidth="250.0" layoutX="743.0" layoutY="22.0">
-            <image>
-                <Image url="@../../../../img/logo.png" />
-            </image>
-        </ImageView>
-      <Button fx:id="AddWordBtn" layoutX="893.0" layoutY="80.0" mnemonicParsing="false" onAction="#onAddWord" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #6480de;" text="Add">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="630.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 20; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-radius: 20;" text="Save">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0">
-               <image>
-                  <Image url="@../../../../img/plus-solid.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button layoutX="893.0" layoutY="157.0" mnemonicParsing="false" onAction="#onDeleteWord" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #6480de;" text="Delete">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0">
-               <image>
-                  <Image url="@../../../../img/minus-solid.png" />
-               </image>
-            </ImageView>
-         </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="893.0" layoutY="230.0" mnemonicParsing="false" onAction="#onEditWord" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #6480de;" text="Edit">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0">
-               <image>
-                  <Image url="@../../../../img/pen-to-square-solid.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+      <ImageView fitHeight="44.0" fitWidth="200.0" layoutX="779.0" layoutY="19.0">
+         <image>
+            <Image url="@../../../../img/Home/logo.png" />
+         </image>
+      </ImageView>
     </children>
 </fx:root>

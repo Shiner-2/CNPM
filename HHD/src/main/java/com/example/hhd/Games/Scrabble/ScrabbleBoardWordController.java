@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,11 +20,14 @@ public class ScrabbleBoardWordController extends AnchorPane {
     private AnchorPane Overlay;
     @FXML
     private ImageView ImageOverlay;
+    @FXML
+    private Label lb;
 
     private boolean sealed = false;
     private int point;
     private boolean choosed = false;
     private String character = "?";
+    public int pos = 0;
     private int Xpos;
     private int Ypos;
 
@@ -68,6 +72,10 @@ public class ScrabbleBoardWordController extends AnchorPane {
         this.sealed = true;
     }
 
+    public void setUnSealed() {
+        this.sealed = false;
+    }
+
     public int getPoint() {
         return point;
     }
@@ -89,28 +97,24 @@ public class ScrabbleBoardWordController extends AnchorPane {
         }
     }
     public void setTW() {
-        ScrabbleBoardWordWord.setStyle("-fx-background-color: red;");
-        Label lb = new Label();
-        lb.setText("TW");
-        ScrabbleBoardWordWord.getChildren().add(lb);
+        ScrabbleBoardWordWord.setStyle("-fx-background-color: #ff9e78; -fx-border-color: white; -fx-border-width: 0.5;");
+        lb.setText("3W");
+        lb.setTextFill(Paint.valueOf("#f67c4b"));
     }
     public void setTL() {
-        ScrabbleBoardWordWord.setStyle("-fx-background-color: blue;");
-        Label lb = new Label();
-        lb.setText("TL");
-        ScrabbleBoardWordWord.getChildren().add(lb);
+        ScrabbleBoardWordWord.setStyle("-fx-background-color: #ffd05f; -fx-border-color: white; -fx-border-width: 0.5;");
+        lb.setText("3L");
+        lb.setTextFill(Paint.valueOf("#f8b20d"));
     }
     public void setDW() {
-        ScrabbleBoardWordWord.setStyle("-fx-background-color: pink;");
-        Label lb = new Label();
-        lb.setText("DW");
-        ScrabbleBoardWordWord.getChildren().add(lb);
+        ScrabbleBoardWordWord.setStyle("-fx-background-color: #aef6ab; -fx-border-color: white; -fx-border-width: 0.5;");
+        lb.setText("2W");
+        lb.setTextFill(Paint.valueOf("#83e07b"));
     }
     public void setDL() {
-        ScrabbleBoardWordWord.setStyle("-fx-background-color: cyan;");
-        Label lb = new Label();
-        lb.setText("DL");
-        ScrabbleBoardWordWord.getChildren().add(lb);
+        ScrabbleBoardWordWord.setStyle("-fx-background-color: #abe6ff; -fx-border-color: white; -fx-border-width: 0.5;");
+        lb.setText("2L");
+        lb.setTextFill(Paint.valueOf("#72d0f6"));
     }
 
     public void setDragEnter() {
@@ -137,6 +141,7 @@ public class ScrabbleBoardWordController extends AnchorPane {
     public void retreat(){
         ImageOverlay.setVisible(false);
         character = "?";
+        pos = -1;
         setChoosed(false);
     }
 }
