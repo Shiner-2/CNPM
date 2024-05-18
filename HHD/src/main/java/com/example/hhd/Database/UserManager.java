@@ -209,15 +209,14 @@ public class UserManager {
      * @param username the username whose profile is to be displayed
      * @return String containing the display name or null if profile not found
      */
-    public static String getProfile(String username) {
+    public static String[] getProfile(String username) {
         String sql = "SELECT DisplayName, RecentWord_Vi_En, RecentWord_En_Vi FROM UserProfiles WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
         try (Connection conn = DBHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return String.format("DisplayName: %s, RecentWord_Vi_En: %s, RecentWord_En_Vi: %s",
-                            rs.getString("DisplayName"), rs.getString("RecentWord_Vi_En"), rs.getString("RecentWord_En_Vi"));
+                    return new String[]{String.valueOf(rs.getString("DisplayName"), rs.getString("RecentWord_Vi_En"), rs.getString("RecentWord_En_Vi"))};
                 }
             }
         } catch (SQLException e) {
