@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +57,19 @@ public class AppController implements Initializable {
         }
     }
 
+    public static HomeController home = new HomeController();
+
     public static TranslatorController translator = new TranslatorController();
+
+    public static UserController user;
+
+    static {
+        try {
+            user = new UserController();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public AppController() throws IOException {
         //data = new TrieDictionary();
@@ -67,6 +80,8 @@ public class AppController implements Initializable {
         sideBar = new SideBar();
         SideBarContainer.getChildren().add(sideBar);
         mainscreen = MainScreen;
+        mainscreen.getChildren().clear();
+        mainscreen.getChildren().add(home);
     }
 
 
