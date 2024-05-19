@@ -2,6 +2,7 @@ package com.example.hhd;
 
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.Word;
+import com.example.hhd.Database.UserManager;
 import com.example.hhd.Dictionary.DictionaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,6 +74,7 @@ public class HomeController extends AnchorPane implements Initializable {
             AppController.dictionary.setRecommendWord(currentString);
 
             dataEN_VI.addRecentWord(currentString);
+            UserManager.updateProfile(PublicValue.username, dataEN_VI.getRecentWord(), "RecentWord_En_Vi");
 
             AppController.mainscreen.getChildren().clear();
             AppController.mainscreen.getChildren().add(AppController.dictionary);
@@ -88,6 +90,7 @@ public class HomeController extends AnchorPane implements Initializable {
             AppController.dictionary.setRecommendWord(currentString);
 
             dataVI_EN.addRecentWord(currentString);
+            UserManager.updateProfile(PublicValue.username, dataVI_EN.getRecentWord(), "RecentWord_Vi_En");
 
             AppController.mainscreen.getChildren().clear();
             AppController.mainscreen.getChildren().add(AppController.dictionary);

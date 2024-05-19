@@ -4,6 +4,7 @@ import com.example.hhd.*;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.Algo.Word;
+import com.example.hhd.Database.UserManager;
 import com.example.hhd.SideBar.SideBar;
 import com.example.hhd.TTS.TTS;
 import javafx.event.ActionEvent;
@@ -132,10 +133,18 @@ public class DictionaryController extends AnchorPane {
         });
         recommendWord.setOnMouseClicked(mouseEvent -> {
             currentWord = recommendWord.getSelectionModel().getSelectedItem();
+            if (currentWord == null) {
+                return ;
+            }
             curString = currentWord.getWord();
             wordDefinition.getChildren().clear();
             showWordDefinition(currentWord);
             data.addRecentWord(curString);
+            if (mode == Dictionary.EN_VI) {
+                UserManager.updateProfile(PublicValue.username, data.getRecentWord(), "RecentWord_En_Vi");
+            } else {
+                UserManager.updateProfile(PublicValue.username, data.getRecentWord(), "RecentWord_Vi_En");
+            }
         });
     }
 
