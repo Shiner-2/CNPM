@@ -1,7 +1,85 @@
 # Wordlish Learning English from Word Games
 ![image](https://github.com/Shiner-2/CNPM/assets/97158120/c83ded53-16d5-4d0e-9ea7-066969b4634c)
 
-# Link báo cáo và demo
+# Personas
+
+## Persona for Children (5-7 years old)
+
+**Name:** Emma
+
+**Age:** 6 years old
+
+**Grade:** Kindergarten
+
+**Background:**
+- Emma is a curious and active child who loves to explore and learn new things.
+- She attends kindergarten where she is starting to learn the basics of reading and writing.
+- Emma enjoys playing games on her tablet, especially those that involve colorful graphics and interactive elements.
+
+**Goals:**
+- Learn new English words and improve her vocabulary.
+- Enjoy the process of learning through fun and engaging activities.
+- Feel a sense of achievement when she completes a task or learns a new word.
+
+**Frustrations:**
+- Gets easily bored with repetitive or non-interactive learning methods.
+- Finds it challenging to remember new words without visual aids or engaging content.
+- Can get frustrated if the tasks are too difficult or not suitable for her age level.
+
+**Technology Use:**
+- Uses a tablet at home, mainly for playing games and educational apps.
+- Has limited reading and writing skills, so relies heavily on visual and auditory cues.
+
+**Favorite Activities:**
+- Playing games that involve matching words with pictures.
+- Listening to stories and watching animated videos.
+- Engaging in activities that reward her with stars, stickers, or other visual incentives.
+
+**Learning Style:**
+- Visual and auditory learner who benefits from colorful images and sounds.
+- Prefers interactive and hands-on activities over passive learning.
+- Enjoys learning in a playful environment where she can explore at her own pace.
+
+## Persona for Parents
+
+**Name:** Sarah Johnson
+
+**Age:** 34 years old
+
+**Occupation:** Marketing Manager
+
+**Background:**
+- Sarah is a working mother with a busy schedule but is very involved in her daughter Emma's education.
+- She values educational tools that can supplement her daughter's learning outside of school.
+- Sarah is tech-savvy and often searches for the best apps and resources to support Emma's development.
+
+**Goals:**
+- Ensure Emma is developing a strong foundation in English vocabulary and literacy skills.
+- Find educational tools that are both effective and engaging for her daughter.
+- Monitor Emma's progress and see tangible results from the educational apps and games she uses.
+
+**Frustrations:**
+- Difficulty finding high-quality, age-appropriate educational apps that keep Emma engaged.
+- Concerned about screen time and wants to ensure that the time spent on devices is productive.
+- Wants an educational tool that provides clear feedback and progress tracking.
+
+**Technology Use:**
+- Regularly uses her smartphone and laptop for work and personal tasks.
+- Prefers apps that have a user-friendly interface and parental control features.
+- Looks for apps with good reviews and recommendations from other parents and educators.
+
+**Priorities:**
+- Educational value and alignment with school curriculum.
+- Safe and ad-free environment for her daughter.
+- Features that allow her to track Emma's progress and identify areas for improvement.
+
+**Parenting Style:**
+- Supportive and proactive in Emma's education.
+- Encourages learning through play and interactive activities.
+- Values a balanced approach to technology, ensuring it's used as a tool for learning rather than just entertainment.
+
+
+# Report and video demo
 https://drive.google.com/drive/folders/1BaKCBOyvoWXBMovUZxC6bcrwi2xh9s0x?usp=drive_link
 
 
