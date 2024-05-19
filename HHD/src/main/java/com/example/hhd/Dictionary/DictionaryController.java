@@ -31,8 +31,8 @@ public class DictionaryController extends AnchorPane {
 
     Dictionary data = AppController.data;
 
-    static Dictionary dataVI_EN;
-    static Dictionary dataEN_VI;
+    public static Dictionary dataVI_EN;
+    public static Dictionary dataEN_VI;
 
     static {
         try {
@@ -86,11 +86,30 @@ public class DictionaryController extends AnchorPane {
         }
     }
 
+    public void setMode(int mode) {
+        this.mode = mode;
+        if (mode == Dictionary.EN_VI) {
+            data = dataEN_VI;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
+        } else {
+            data = dataVI_EN;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
+        }
+    }
+
     @FXML
     private void onUserTyping(){
         String inputText = userInputWord.getText();
         inputText = inputText.toLowerCase(Locale.ROOT);
 
+        setRecommendWord(inputText);
+    }
+
+    public void setRecommendWord(String inputText) {
         recommendWord.getItems().clear();
         recommendWord.getItems().addAll(data.searchWithRecentWord(inputText));
         recommendWord.setCellFactory(param -> new ListCell<>() {
@@ -113,7 +132,6 @@ public class DictionaryController extends AnchorPane {
             data.addRecentWord(curString);
         });
     }
-
     
     // TODO: change this
     public void LoadApp(ActionEvent event) throws IOException {
@@ -121,6 +139,8 @@ public class DictionaryController extends AnchorPane {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("App.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        AppController.home.updateRecentWord();
 
         stage.setTitle("HHD");
         stage.setScene(scene);
@@ -173,7 +193,7 @@ public class DictionaryController extends AnchorPane {
         wordDefinition.getChildren().add(tx);
     }
 
-    private void showWordDefinition(Word Eword) {
+    public void showWordDefinition(Word Eword) {
         if (Eword == null) return ;
         String word = Eword.getWord(), definition = Eword.getDefinition();
 

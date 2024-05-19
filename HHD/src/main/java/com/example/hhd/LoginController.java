@@ -1,6 +1,7 @@
 package com.example.hhd;
 
 import com.example.hhd.Database.UserManager;
+import com.example.hhd.Dictionary.DictionaryController;
 import javafx.beans.binding.Bindings;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -43,7 +44,9 @@ public class LoginController implements Initializable {
     public void onLoginClick(Event e) {
         String username = Username.getText();
         String password = Password.getText();
-        UserManager.getUserByUsername(username);
+//        UserManager.getUserByUsername(username);
+        DictionaryController.dataVI_EN.loadRecentWord(UserManager.getProfile(username)[1]);
+        DictionaryController.dataEN_VI.loadRecentWord(UserManager.getProfile(username)[2]);
     }
 
     @Override

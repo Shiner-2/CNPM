@@ -216,7 +216,7 @@ public class UserManager {
             pstmt.setString(1, username);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return new String[]{String.valueOf(rs.getString("DisplayName"), rs.getString("RecentWord_Vi_En"), rs.getString("RecentWord_En_Vi"))};
+                    return new String[]{rs.getString("DisplayName"), rs.getString("RecentWord_Vi_En"), rs.getString("RecentWord_En_Vi")};
                 }
             }
         } catch (SQLException e) {

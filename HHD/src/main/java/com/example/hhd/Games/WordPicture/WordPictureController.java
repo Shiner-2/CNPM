@@ -166,6 +166,7 @@ public class WordPictureController extends AnchorPane implements Initializable {
         }
         userInputWord.setDisable(true);
         QuizNextBtn.setDisable(false);
+        QuizNextBtn.setVisible(true);
 
         if (questionCount == 10) {
             QuizNextBtn.setDisable(true);
