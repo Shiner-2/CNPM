@@ -28,16 +28,16 @@ public class AppController implements Initializable {
     private Scene scene;
     private FXMLLoader fxmlLoader;
 
-    public static Dictionary data;
+    public static Dictionary data = PublicValue.dataEN_VI;
 
-    static {
-        try {
-            data = new TrieDictionary(TrieDictionary.EN_VI, true);
-            // data = new TrieDictionary(TrieDictionary.VI_EN, true);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    static {
+//        try {
+//            data = new TrieDictionary(TrieDictionary.EN_VI, true);
+//            // data = new TrieDictionary(TrieDictionary.VI_EN, true);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @FXML
     private AnchorPane SideBarContainer;
@@ -50,11 +50,7 @@ public class AppController implements Initializable {
     public static DictionaryController dictionary;
 
     static {
-        try {
-            dictionary = new DictionaryController();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+       dictionary = new DictionaryController();
     }
 
     public static GamesController games;

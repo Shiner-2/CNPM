@@ -1,5 +1,8 @@
 package com.example.hhd;
 
+import com.example.hhd.Algo.Dictionary;
+import com.example.hhd.Algo.Word;
+import com.example.hhd.Dictionary.DictionaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,6 +43,9 @@ public class HomeController extends AnchorPane implements Initializable {
     private ArrayList<String> joke = new ArrayList<>();
     private Random random = new Random();
 
+    static Dictionary dataVI_EN = PublicValue.dataVI_EN;
+    static Dictionary dataEN_VI = PublicValue.dataEN_VI;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -54,6 +60,38 @@ public class HomeController extends AnchorPane implements Initializable {
         }
         NewJoke();
         WelcomeMessage.setText("Welcome " + PublicValue.profile[0] + " to our App!");
+
+        updateRecentWord();
+
+        EnViRecent.setOnMouseClicked(mouseEvent -> {
+            String currentString = (String) EnViRecent.getSelectionModel().getSelectedItem();
+            AppController.dictionary.setMode(Dictionary.EN_VI);
+
+            Word currentWord = dataEN_VI.search(currentString).get(0);
+
+            AppController.dictionary.showWordDefinition(currentWord);
+            AppController.dictionary.setRecommendWord(currentString);
+
+            dataEN_VI.addRecentWord(currentString);
+
+            AppController.mainscreen.getChildren().clear();
+            AppController.mainscreen.getChildren().add(AppController.dictionary);
+        });
+
+        ViEnRecent.setOnMouseClicked(mouseEvent -> {
+            String currentString = (String) ViEnRecent.getSelectionModel().getSelectedItem();
+            AppController.dictionary.setMode(Dictionary.VI_EN);
+
+            Word currentWord = dataVI_EN.search(currentString).get(0);
+
+            AppController.dictionary.showWordDefinition(currentWord);
+            AppController.dictionary.setRecommendWord(currentString);
+
+            dataVI_EN.addRecentWord(currentString);
+
+            AppController.mainscreen.getChildren().clear();
+            AppController.mainscreen.getChildren().add(AppController.dictionary);
+        });
     }
 
     @FXML
@@ -64,6 +102,14 @@ public class HomeController extends AnchorPane implements Initializable {
 
     public void UpdateName() {
         WelcomeMessage.setText("Welcome " + PublicValue.profile[0] + " to our App!");
+    }
+
+
+    public void updateRecentWord() {
+        EnViRecent.getItems().clear();
+        ViEnRecent.getItems().clear();
+        EnViRecent.getItems().addAll(dataEN_VI.getRecentWord().split("\n"));
+        ViEnRecent.getItems().addAll(dataVI_EN.getRecentWord().split("\n"));
     }
 
 }
