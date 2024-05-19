@@ -2,7 +2,8 @@
 ![image](https://github.com/Shiner-2/CNPM/assets/97158120/c83ded53-16d5-4d0e-9ea7-066969b4634c)
 
 # Link báo cáo và demo
-![link](https://drive.google.com/drive/folders/1BaKCBOyvoWXBMovUZxC6bcrwi2xh9s0x?usp=drive_link)
+https://drive.google.com/drive/folders/1BaKCBOyvoWXBMovUZxC6bcrwi2xh9s0x?usp=drive_link
+
 
 ## Author
 Our Group
