@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #def249;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" layoutX="49.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="Lb" text="GameName">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="GameImg" fitHeight="120.0" fitWidth="200.0">
+               <image>
+                  <Image url="@../../../img/Wordle-Logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="325.0" layoutY="11.0" prefHeight="180.0" prefWidth="222.0" style="-fx-background-color: yellow; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="Lb1" text="Label">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="Lb2" text="Label">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="625.0" layoutY="11.0" prefHeight="180.0" prefWidth="222.0" style="-fx-background-color: yellow; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="Lb3" text="Label">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="Lb4" text="Label">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</fx:root>

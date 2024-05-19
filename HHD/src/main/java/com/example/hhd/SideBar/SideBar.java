@@ -129,6 +129,7 @@ public class SideBar extends AnchorPane implements Initializable {
     public static void loadUser() {
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(AppController.user);
+        AppController.user.updateStat();
     }
 
 

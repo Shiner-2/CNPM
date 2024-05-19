@@ -118,9 +118,9 @@ public class QuizGameController extends AnchorPane implements Initializable {
         int hs = Integer.parseInt(getUserData[2]);
         int tw = Integer.parseInt(getUserData[3]) + 1;
         if(tw == 1) {
-            hs = score;
+            hs = score * 100;
         } else{
-            hs = Math.max(hs,score);
+            hs = Math.max(hs,score*100);
         }
         getUserData[2] = String.valueOf(hs);
         getUserData[3] = String.valueOf(tw);

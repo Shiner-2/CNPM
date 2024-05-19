@@ -1,7 +1,9 @@
 package com.example.hhd.Games.WordPicture;
 
 import com.example.hhd.App;
+import com.example.hhd.Database.GameManagement;
 import com.example.hhd.Games.GamesController;
+import com.example.hhd.PublicValue;
 import com.example.hhd.SideBar.SideBar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +47,8 @@ public class WordPictureController extends AnchorPane implements Initializable {
 
     WordPictureGame data;
 
+    String[] getUserData = GameManagement.getUserGame(Integer.parseInt(PublicValue.user[0]),5);
+
     public WordPictureController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/WordPicture/WordPicture.fxml"));
         fxmlLoader.setRoot(this);
@@ -57,21 +61,6 @@ public class WordPictureController extends AnchorPane implements Initializable {
         GamesController.setHoverEffect(home,reset,info);
     }
 
-//    public WordPictureController(String gameData) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/WordPicture/WordPicture.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
-//
-//        score = Helper.getData("score", gameData);
-//        Point.setText(String.valueOf(score * 100));
-//        String w = Helper.getData("word", gameData);
-//        q = new Pair<>(w, data.getImage(w));
-//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -178,6 +167,16 @@ public class WordPictureController extends AnchorPane implements Initializable {
             a.setTitle("Game Over");
             a.setContentText("You score " + score*100 + " point!!!");
             a.show();
+
+            int id = Integer.parseInt(getUserData[0]);
+            int hs = Integer.parseInt(getUserData[2]);
+            int tw = Integer.parseInt(getUserData[3]) + 1;
+            if(tw==1) {
+                hs = score * 100;
+            } else {
+                hs = Math.max(hs,score*100);
+            }
+            GameManagement.updateUserGame(id,"",hs,tw);
         }
     }
 }

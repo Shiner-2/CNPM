@@ -26,7 +26,4 @@ public class PublicValue {
         Wordle 4
         WordPicture 5
      */
-    public static void main(String[] args) {
-        GameManagement.updateUserGame(12, "ABCDEABCDE\nOPA", 0, 0);
-    }
 }

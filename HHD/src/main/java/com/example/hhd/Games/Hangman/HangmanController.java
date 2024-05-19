@@ -245,6 +245,17 @@ public class HangmanController extends AnchorPane implements Initializable {
         losing.setTitle("You lose");
         losing.setContentText("Better luck next time");
         losing.show();
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]) + 1;
+        if(tw == 1) {
+            hs = wrongcnt + 1;
+        } else{
+            hs = Math.min(hs,(wrongcnt+1));
+        }
+        getUserData[2] = String.valueOf(hs);
+        getUserData[3] = String.valueOf(tw);
+        GameManagement.updateUserGame(id,"",hs,tw);
         CloseGame();
     }
 

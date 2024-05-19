@@ -62,5 +62,8 @@ public class HomeController extends AnchorPane implements Initializable {
         Joke.setText(joke.get(rand));
     }
 
+    public void UpdateName() {
+        WelcomeMessage.setText("Welcome " + PublicValue.profile[0] + " to our App!");
+    }
 
 }
