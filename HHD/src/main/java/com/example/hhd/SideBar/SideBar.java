@@ -109,6 +109,7 @@ public class SideBar extends AnchorPane implements Initializable {
     public static void loadDictionary() {
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(AppController.dictionary);
+        body1.onClick();
     }
 
     public static void loadGames() {
@@ -133,6 +134,7 @@ public class SideBar extends AnchorPane implements Initializable {
         AppController.user.updateStat();
     }
 
+    public static SideBarItem body1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -148,7 +150,7 @@ public class SideBar extends AnchorPane implements Initializable {
         });
         curSelect = head1;
 
-        SideBarItem body1 = new SideBarItem("HHD/src/main/resources/img/UI_button/book.png",
+        body1 = new SideBarItem("HHD/src/main/resources/img/UI_button/book.png",
                 "HHD/src/main/resources/img/UI_button/book1.png", 77, 70, "dictionary");
         body1.setOnMouseClicked(event -> {
             loadDictionary();

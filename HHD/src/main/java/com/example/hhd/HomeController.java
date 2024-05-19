@@ -4,6 +4,7 @@ import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.Word;
 import com.example.hhd.Database.UserManager;
 import com.example.hhd.Dictionary.DictionaryController;
+import com.example.hhd.SideBar.SideBar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -76,8 +77,9 @@ public class HomeController extends AnchorPane implements Initializable {
             dataEN_VI.addRecentWord(currentString);
             UserManager.updateProfile(PublicValue.username, dataEN_VI.getRecentWord(), "RecentWord_En_Vi");
 
-            AppController.mainscreen.getChildren().clear();
-            AppController.mainscreen.getChildren().add(AppController.dictionary);
+//            AppController.mainscreen.getChildren().clear();
+//            AppController.mainscreen.getChildren().add(AppController.dictionary);
+            SideBar.loadDictionary();
         });
 
         ViEnRecent.setOnMouseClicked(mouseEvent -> {
@@ -92,8 +94,9 @@ public class HomeController extends AnchorPane implements Initializable {
             dataVI_EN.addRecentWord(currentString);
             UserManager.updateProfile(PublicValue.username, dataVI_EN.getRecentWord(), "RecentWord_Vi_En");
 
-            AppController.mainscreen.getChildren().clear();
-            AppController.mainscreen.getChildren().add(AppController.dictionary);
+//            AppController.mainscreen.getChildren().clear();
+//            AppController.mainscreen.getChildren().add(AppController.dictionary);
+            SideBar.loadDictionary();
         });
     }
 

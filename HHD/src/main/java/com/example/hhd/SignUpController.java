@@ -32,6 +32,13 @@ public class SignUpController{
             a.show();
             return;
         }
+        if(DisplayName.getText() == null || DisplayName.getText().length() < 5 || DisplayName.getText().length() > 16) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Error");
+            a.setContentText("DisplayName must be 5-16 character");
+            a.show();
+            return;
+        }
         if(Password.getText() == null || Password.getText().length() < 5 || Password.getText().length() > 16) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Error");
