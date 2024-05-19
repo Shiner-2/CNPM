@@ -1,6 +1,7 @@
 package com.example.hhd;
 
 import com.example.hhd.Database.UserManager;
+import com.example.hhd.Dictionary.DictionaryController;
 import javafx.beans.binding.Bindings;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Dictionary;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -52,6 +54,13 @@ public class LoginController implements Initializable {
             PublicValue.username = username;
             PublicValue.profile = UserManager.getProfile(username);
             PublicValue.user = UserManager.getUser(username);
+
+            if (PublicValue.profile[1] != null) {
+                PublicValue.dataVI_EN.loadRecentWord(PublicValue.profile[1]);
+            }
+            if (PublicValue.profile[2] != null) {
+                PublicValue.dataEN_VI.loadRecentWord(PublicValue.profile[2]);
+            }
 
             Stage newWindow = new Stage();
             newWindow.setTitle("WordLish");
