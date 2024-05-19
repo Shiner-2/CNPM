@@ -32,7 +32,8 @@ public class AppController implements Initializable {
 
     static {
         try {
-            data = new TrieDictionary();
+            data = new TrieDictionary(TrieDictionary.EN_VI, true);
+            // data = new TrieDictionary(TrieDictionary.VI_EN, true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -31,6 +31,20 @@ public class DictionaryController extends AnchorPane {
 
     Dictionary data = AppController.data;
 
+    static Dictionary dataVI_EN;
+    static Dictionary dataEN_VI;
+
+    static {
+        try {
+            dataVI_EN = new TrieDictionary(Dictionary.VI_EN, true);
+            dataEN_VI = AppController.data;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int mode = Dictionary.EN_VI;
+
     @FXML
     private TextField userInputWord;
 
@@ -57,12 +71,28 @@ public class DictionaryController extends AnchorPane {
     }
 
     @FXML
+    private void onSwitch() {
+        mode ^= 1;
+        if (mode == Dictionary.EN_VI) {
+            data = dataEN_VI;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
+        } else {
+            data = dataVI_EN;
+            wordDefinition.getChildren().clear();
+            userInputWord.setText("");
+            recommendWord.getItems().clear();
+        }
+    }
+
+    @FXML
     private void onUserTyping(){
         String inputText = userInputWord.getText();
         inputText = inputText.toLowerCase(Locale.ROOT);
 
         recommendWord.getItems().clear();
-        recommendWord.getItems().addAll(data.search(inputText));
+        recommendWord.getItems().addAll(data.searchWithRecentWord(inputText));
         recommendWord.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Word item, boolean empty) {
@@ -80,6 +110,7 @@ public class DictionaryController extends AnchorPane {
             curString = currentWord.getWord();
             wordDefinition.getChildren().clear();
             showWordDefinition(currentWord);
+            data.addRecentWord(curString);
         });
     }
 
@@ -101,50 +132,43 @@ public class DictionaryController extends AnchorPane {
     }
 
     private void showWord(String word) {
-        //System.out.println(word); // bold + header font
-
         Text tx = new Text("\t"+word + "\n");
-        tx.setStyle("-fx-font: 20px \"arial,sans-serif\";");
+        tx.setStyle("-fx-font: 18px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
 
     private void showPronunciation(String pronunciation) {
-        //System.out.println(pronunciation); // sound button
-
         Text tx = new Text("\t"+pronunciation + "\n");
         tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
-
     }
 
     private void showType(String type) {
-        //System.out.println(type); // italic type
-
-        Text tx = new Text("\t"+type + "\n");
+        Text tx = new Text("\t" + type + "\n");
         tx.setStyle("-fx-font: italic 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
 
     private void showMeaning(String meaning, int index) {
-        //System.out.println("\t" + index + ". " + meaning);
-
-        Text tx = new Text("\t\t" + index + ". " + meaning + "\n");
-        tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
+        Text tx = new Text("\t   " + index + ". " + meaning + "\n");
+        tx.setStyle("-fx-font: 13px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
 
     private void showExample(String example, String meaning) {
-        //System.out.println("\t\tex. " + example + " : " + meaning);
-
-        Text tx = new Text("\t\t\tex. " + example + " : " + meaning + "\n");
-        tx.setStyle("-fx-font: 12px \"arial,sans-serif\";");
-        wordDefinition.getChildren().add(tx);
+        if (meaning.isEmpty()) {
+            Text tx = new Text("\t       ex. " + example + "\n");
+            tx.setStyle("-fx-font: 12px \"arial,sans-serif\";");
+            wordDefinition.getChildren().add(tx);
+        } else {
+            Text tx = new Text("\t       ex. " + example + " : " + meaning + "\n");
+            tx.setStyle("-fx-font: 12px \"arial,sans-serif\";");
+            wordDefinition.getChildren().add(tx);
+        }
     }
 
     private void showPhrase(String phrase) {
-        //System.out.println("phrase: " + phrase);
-
-        Text tx = new Text("\tphrase: " + phrase + "\n");
+        Text tx = new Text("\tidioms: " + phrase + "\n");
         tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
@@ -176,16 +200,18 @@ public class DictionaryController extends AnchorPane {
                     showType(line.substring(1).strip());
                     break;
                 case '-': // meaning
-                    if (line.charAt(1) == ' ') {
-                        showMeaning(line.substring(1).strip(), ++ countMeaning);
-                    }
-                    // else malformed input
+                    showMeaning(line.substring(1).strip(), ++ countMeaning);
                     break;
                 case '=': // example
                     int separator = line.indexOf('+');
-                    String example = line.substring(1, separator);
-                    String meaning = line.substring(separator + 1);
-                    showExample(example, meaning);
+                    if (separator < 0) {
+                        String example = line.substring(1).strip();
+                        showExample(example, "");
+                    } else {
+                        String example = line.substring(1, separator).strip();
+                        String meaning = line.substring(separator + 1).strip();
+                        showExample(example, meaning);
+                    }
                     break;
                 default:
 //                    malformed input

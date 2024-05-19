@@ -1,23 +1,30 @@
 package com.example.hhd.Games.WordPicture;
 
+import com.example.hhd.App;
+import com.example.hhd.SideBar.SideBar;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Pair;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class WordPictureController implements Initializable {
+public class WordPictureController extends AnchorPane implements Initializable {
     @FXML
-    ImageView imageView;
-
+    private Label QuestionNumberCnt;
     @FXML
-    Label question;
+    private ImageView Question;
+    @FXML
+    private Label wordHint;
 
     @FXML
     Label Point;
@@ -28,11 +35,41 @@ public class WordPictureController implements Initializable {
     @FXML
     TextField userInputWord;
 
+    @FXML
+    ImageView info, reset, home;
+
     Pair<String, Image> q;
 
     public static int score = 0;
 
     WordPictureGame data;
+
+    public WordPictureController() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/WordPicture/WordPicture.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+//    public WordPictureController(String gameData) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/WordPicture/WordPicture.fxml"));
+//        fxmlLoader.setRoot(this);
+//        fxmlLoader.setController(this);
+//        try {
+//            fxmlLoader.load();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
+//
+//        score = Helper.getData("score", gameData);
+//        Point.setText(String.valueOf(score * 100));
+//        String w = Helper.getData("word", gameData);
+//        q = new Pair<>(w, data.getImage(w));
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,10 +87,24 @@ public class WordPictureController implements Initializable {
                 userInputWord.setText("");
             }
         });
+        home.setOnMouseClicked(event -> {
+            SideBar.loadGames();
+        });
+        reset.setOnMouseClicked(event -> {
+            setUpGame();
+        });
+
+        score = questionCount = 0;
         setQuestion();
         QuizNextBtn.setOnMouseClicked(mouseEvent -> {
             setQuestion();
         });
+    }
+
+    public void setUpGame() {
+        score = questionCount = 0;
+        Point.setText("0");
+        setQuestion();
     }
 
     public String getHint(String s) {
@@ -63,14 +114,14 @@ public class WordPictureController implements Initializable {
     }
 
     private void centerImage() {
-        Image img = imageView.getImage();
+        Image img = Question.getImage();
         if (img == null) return ;
 
         double w = 0;
         double h = 0;
 
-        double ratioX = imageView.getFitWidth() / img.getWidth();
-        double ratioY = imageView.getFitHeight() / img.getHeight();
+        double ratioX = Question.getFitWidth() / img.getWidth();
+        double ratioY = Question.getFitHeight() / img.getHeight();
 
         double reducCoeff = 0;
         if(ratioX >= ratioY) {
@@ -82,39 +133,48 @@ public class WordPictureController implements Initializable {
         w = img.getWidth() * reducCoeff;
         h = img.getHeight() * reducCoeff;
 
-        imageView.setX((imageView.getFitWidth() - w) / 2);
-        imageView.setY((imageView.getFitHeight() - h) / 2);
+        Question.setX((Question.getFitWidth() - w) / 2);
+        Question.setY((Question.getFitHeight() - h) / 2);
     }
 
+    int questionCount = 0;
     public void setQuestion() {
+        ++ questionCount;
+        QuestionNumberCnt.setText(String.format("%d/10",questionCount));
         try {
             q = data.getQuiz();
-            question.setText(getHint(q.getKey().toUpperCase()));
-            imageView.setImage(q.getValue());
+            wordHint.setText(getHint(q.getKey().toUpperCase()));
+            Question.setImage(q.getValue());
 
             centerImage();
 
-            QuizNextBtn.setDisable(true);
+            QuizNextBtn.setVisible(false);
             userInputWord.setDisable(false);
-            question.setStyle("-fx-background-color: WHITE; -fx-background-radius: 10px");
+            wordHint.setStyle("-fx-background-color: GREEN; -fx-background-radius: 10px");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    int questionCount = 0;
     public void showResult(boolean isCorrect) {
         if (isCorrect) {
-            question.setText(q.getKey().toUpperCase());
+            wordHint.setText(q.getKey().toUpperCase());
             Point.setText(String.valueOf(score * 100));
-            question.setStyle("-fx-background-color: GREEN; -fx-background-radius: 10px");
+            wordHint.setStyle("-fx-background-color: GREEN; -fx-background-radius: 10px");
         } else {
-            question.setText(q.getKey().toUpperCase());
-            question.setStyle("-fx-background-color: RED; -fx-background-radius: 10px");
+            wordHint.setText(q.getKey().toUpperCase());
+            wordHint.setStyle("-fx-background-color: RED; -fx-background-radius: 10px");
         }
         userInputWord.setDisable(true);
         QuizNextBtn.setDisable(false);
-        questionCount ++;
-//        FXMLLoader fxmlLoader = new FXMLLoader("");
+
+        if (questionCount == 10) {
+            QuizNextBtn.setDisable(true);
+            QuizNextBtn.setVisible(false);
+
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setTitle("Game Over");
+            a.setContentText("You score " + score*100 + " point!!!");
+            a.show();
+        }
     }
 }

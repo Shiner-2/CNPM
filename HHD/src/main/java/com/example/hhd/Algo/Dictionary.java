@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Dictionary {
+    public static final int VI_EN = 0;
+    public static final int EN_VI = 1;
+
     public Dictionary getDictionary_from_file(File file) throws IOException {
         if (Helper.get_extension(file).equals("txt")) {
             return new TrieDictionary(file);
@@ -21,6 +24,14 @@ public abstract class Dictionary {
     public abstract boolean deleteAndSave(Word word);
 
     public abstract ArrayList<Word> search(String target);
+
+    public abstract ArrayList<Word> searchWithRecentWord(String target);
+
+    public abstract void loadRecentWord(String data);
+
+    public abstract void addRecentWord(String word);
+
+    public abstract String getRecentWord();
 
     public abstract boolean contains(String word_target);
 

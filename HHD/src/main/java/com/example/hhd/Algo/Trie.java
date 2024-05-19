@@ -22,6 +22,12 @@ public class Trie {
     }
 
     /**
+     * Clear the trie
+     */
+    public void clear() {
+        root = new TrieNode();
+    }
+    /**
      * Add new_word to trie.
      * @param new_word is the word need to add
      */
