@@ -3,18 +3,18 @@
 
 # Personas
 
-## Persona for Children (5-7 years old)
+## Persona for Children
 
-**Name:** Emma
+**Name:** Thang
 
 **Age:** 6 years old
 
 **Grade:** Kindergarten
 
 **Background:**
-- Emma is a curious and active child who loves to explore and learn new things.
+- Thang is a curious and active child who loves to explore and learn new things.
 - She attends kindergarten where she is starting to learn the basics of reading and writing.
-- Emma enjoys playing games on her tablet, especially those that involve colorful graphics and interactive elements.
+- Thang enjoys playing games on her tablet, especially those that involve colorful graphics and interactive elements.
 
 **Goals:**
 - Learn new English words and improve her vocabulary.
@@ -42,24 +42,24 @@
 
 ## Persona for Parents
 
-**Name:** Sarah Johnson
+**Name:** Phuong
 
 **Age:** 34 years old
 
 **Occupation:** Marketing Manager
 
 **Background:**
-- Sarah is a working mother with a busy schedule but is very involved in her daughter Emma's education.
+- Phuong is a working mother with a busy schedule but is very involved in her daughter Thang's education.
 - She values educational tools that can supplement her daughter's learning outside of school.
-- Sarah is tech-savvy and often searches for the best apps and resources to support Emma's development.
+- Phuong is tech-savvy and often searches for the best apps and resources to support Thang's development.
 
 **Goals:**
-- Ensure Emma is developing a strong foundation in English vocabulary and literacy skills.
+- Ensure Thang is developing a strong foundation in English vocabulary and literacy skills.
 - Find educational tools that are both effective and engaging for her daughter.
-- Monitor Emma's progress and see tangible results from the educational apps and games she uses.
+- Monitor Thang's progress and see tangible results from the educational apps and games she uses.
 
 **Frustrations:**
-- Difficulty finding high-quality, age-appropriate educational apps that keep Emma engaged.
+- Difficulty finding high-quality, age-appropriate educational apps that keep Thang engaged.
 - Concerned about screen time and wants to ensure that the time spent on devices is productive.
 - Wants an educational tool that provides clear feedback and progress tracking.
 
@@ -71,10 +71,10 @@
 **Priorities:**
 - Educational value and alignment with school curriculum.
 - Safe and ad-free environment for her daughter.
-- Features that allow her to track Emma's progress and identify areas for improvement.
+- Features that allow her to track Thang's progress and identify areas for improvement.
 
 **Parenting Style:**
-- Supportive and proactive in Emma's education.
+- Supportive and proactive in Thang's education.
 - Encourages learning through play and interactive activities.
 - Values a balanced approach to technology, ensuring it's used as a tool for learning rather than just entertainment.
 
