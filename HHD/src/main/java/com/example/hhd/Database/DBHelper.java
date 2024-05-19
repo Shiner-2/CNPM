@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBHelper {
   
-    private static final String URL = "jdbc:sqlite:src/main/resources/data/UserDB.db";
+    private static final String URL = "jdbc:sqlite:HHD/src/main/resources/data/UserDB.db";
     private static final int MAX_RETRIES = 3;
     private static final int RETRY_DELAY_MS = 1000;
 

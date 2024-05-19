@@ -167,7 +167,7 @@ public class GameManagement {
      * @param gameId The game's ID
      * @return A string representation of the user game details, or null if not found
      */
-    public static String getUserGame(int userId, int gameId) {
+    public static String[] getUserGame(int userId, int gameId) {
         String sql = "SELECT UserGameID, GameState, HighScore, WinTimes FROM UserGames WHERE UserID = ? AND GameID = ?";
 
         try (Connection conn = DBHelper.connect();
@@ -177,13 +177,16 @@ public class GameManagement {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return String.format(
-                            "UserGameID: %d, GameState: %s, HighScore: %d, WinTimes: %d",
-                            rs.getInt("UserGameID"),
-                            rs.getString("GameState"),
-                            rs.getInt("HighScore"),
-                            rs.getInt("WinTimes")
-                    );
+
+                    return new String[] {String.valueOf(rs.getInt("UserGameID")), rs.getString("GameState"), String.valueOf(rs.getInt("HighScore")), String.valueOf(rs.getInt("WinTimes"))};
+
+//                    return String.format(
+//                            "UserGameID: %d, GameState: %s, HighScore: %d, WinTimes: %d",
+//                            rs.getInt("UserGameID"),
+//                            rs.getString("GameState"),
+//                            rs.getInt("HighScore"),
+//                            rs.getInt("WinTimes")
+//                    );
                 }
             }
         } catch (SQLException e) {

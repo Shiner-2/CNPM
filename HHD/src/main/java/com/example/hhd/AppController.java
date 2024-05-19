@@ -47,7 +47,16 @@ public class AppController implements Initializable {
 
     private SideBar sideBar;
 
-    public static DictionaryController dictionary = new DictionaryController();
+    public static DictionaryController dictionary;
+
+    static {
+        try {
+            dictionary = new DictionaryController();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static GamesController games;
 
     static {

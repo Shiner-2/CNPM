@@ -53,6 +53,7 @@ public class HomeController extends AnchorPane implements Initializable {
             throw new RuntimeException(e);
         }
         NewJoke();
+        WelcomeMessage.setText("Welcome " + PublicValue.profile[0] + " to our App!");
     }
 
     @FXML

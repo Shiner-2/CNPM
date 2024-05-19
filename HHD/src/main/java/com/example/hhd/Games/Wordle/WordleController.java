@@ -2,6 +2,7 @@ package com.example.hhd.Games.Wordle;
 
 import com.example.hhd.*;
 import com.example.hhd.Algo.Dictionary;
+import com.example.hhd.Database.GameManagement;
 import com.example.hhd.Games.GamesController;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
@@ -30,6 +31,7 @@ public class WordleController extends AnchorPane implements Initializable {
     private Dictionary data = AppController.data;
     public static ArrayList<WordleWordController> board = new ArrayList<>();
     private Popup popup = new Popup();
+    static String[] getUserData = GameManagement.getUserGame(Integer.parseInt(PublicValue.user[0]),4);
 
     @FXML
     private ImageView imgV1;
@@ -63,15 +65,32 @@ public class WordleController extends AnchorPane implements Initializable {
             a.setContentText("WELL PLAYED");
             a.show();
             GameState = true;
+
+            WordleController.updateData();
         } else{
-            if(GameState == true) {
+            if(GameState) {
                 return;
             }
+            WordleController.updateData();
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setTitle("You lose");
             a.setContentText("The Hidden Word is: " + HiddenWord);
             a.show();
         }
+    }
+
+    public static void updateData() {
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]) + 1;
+        if(tw == 1) {
+            hs = GuessCount;
+        } else{
+            hs = Math.min(hs,(GuessCount));
+        }
+        getUserData[2] = String.valueOf(hs);
+        getUserData[3] = String.valueOf(tw);
+        GameManagement.updateUserGame(id,"",hs,tw);
     }
 
     public static void onLoad() {
@@ -88,7 +107,7 @@ public class WordleController extends AnchorPane implements Initializable {
         GuessCount++;
         if(GuessCount>=6) {
             EndGame(false);
-            System.out.println("lose");
+            //System.out.println("lose");
             return;
         }
         board.get(GuessCount).getWordleWordContainer().requestFocus();
@@ -107,9 +126,12 @@ public class WordleController extends AnchorPane implements Initializable {
             WordleContainer.getChildren().add(Word);
         }
         onLoad();
+
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,"",hs,tw);
     }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -144,17 +166,32 @@ public class WordleController extends AnchorPane implements Initializable {
         }
         s = s + HiddenWord + "\n";
         //System.out.println(s);
+
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,s,hs,tw);
+
     }
 
     public void LoadData() {
         // TODO: getData
-        String s = "hello\n" +
-                "happy\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "dense";
+//        String s = "hello\n" +
+//                "happy\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "dense";
+        if(getUserData == null){
+            NewGame();
+            return;
+        }
+        String s = getUserData[1];
+        if(s.length()<2){
+            NewGame();
+            return;
+        }
         String[] dat = s.split("\n");
         board.clear();
         WordleContainer.getChildren().clear();

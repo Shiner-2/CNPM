@@ -1,7 +1,9 @@
 package com.example.hhd.Games.Quiz;
 
 import com.example.hhd.App;
+import com.example.hhd.Database.GameManagement;
 import com.example.hhd.Games.GamesController;
+import com.example.hhd.PublicValue;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -41,6 +43,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
     private ImageView imgV2;
     @FXML
     private ImageView imgV3;
+    String[] getUserData = GameManagement.getUserGame(Integer.parseInt(PublicValue.user[0]),2);
 
     public QuizGameController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Quiz/Quiz.fxml"));
@@ -62,6 +65,10 @@ public class QuizGameController extends AnchorPane implements Initializable {
         score = 0;
         setQuestion();
         initGame();
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,"",hs,tw);
     }
 
     @Override
@@ -106,6 +113,18 @@ public class QuizGameController extends AnchorPane implements Initializable {
         a.setTitle("Game Over");
         a.setContentText("You score " + score*100 + " point!!!");
         a.show();
+
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]) + 1;
+        if(tw == 1) {
+            hs = score;
+        } else{
+            hs = Math.max(hs,score);
+        }
+        getUserData[2] = String.valueOf(hs);
+        getUserData[3] = String.valueOf(tw);
+        GameManagement.updateUserGame(id,"",hs,tw);
     }
 
     public void setQuestion() {
@@ -203,6 +222,8 @@ public class QuizGameController extends AnchorPane implements Initializable {
         if(questionCounter>10){
             showResult();
         }
+
+        QuizToData();
     }
 
     /*
@@ -215,6 +236,7 @@ public class QuizGameController extends AnchorPane implements Initializable {
         Question
         Ans
      */
+
     public void QuizToData() {
         String s = "";
         s = s + questionCounter + "\n";
@@ -226,19 +248,32 @@ public class QuizGameController extends AnchorPane implements Initializable {
         s = s + choiceD.getText() + "\n";
         s = s + curQuestion + "\n";
         s = s + curAns;
-        // TODO: update gameData
+
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,s,hs,tw);
     }
 
     public void loadData() {
         // TODO: getData
-        String s = "9\n" +
-                "2\n" +
-                "zealot\n" +
-                "nebulous\n" +
-                "facade\n" +
-                "hallowed\n" +
-                "Which word best matches the following description? 'an outward appearance that is maintained to conceal a less pleasant reality'\n" +
-                "facade";
+//        String s = "9\n" +
+//                "2\n" +
+//                "zealot\n" +
+//                "nebulous\n" +
+//                "facade\n" +
+//                "hallowed\n" +
+//                "Which word best matches the following description? 'an outward appearance that is maintained to conceal a less pleasant reality'\n" +
+//                "facade";
+        if(getUserData == null) {
+            replay();
+            return;
+        }
+        String s = getUserData[1];
+        if(s.length() < 2) {
+            replay();
+            return;
+        }
         String[] data = s.split("\n");
         questionCounter = Integer.parseInt(data[0]);
         score = Integer.parseInt(data[1]);

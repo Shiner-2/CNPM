@@ -1,6 +1,7 @@
 package com.example.hhd.Games.WordPicture;
 
 import com.example.hhd.App;
+import com.example.hhd.Games.GamesController;
 import com.example.hhd.SideBar.SideBar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,7 @@ public class WordPictureController extends AnchorPane implements Initializable {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        GamesController.setHoverEffect(home,reset,info);
     }
 
 //    public WordPictureController(String gameData) throws IOException {
@@ -166,6 +168,7 @@ public class WordPictureController extends AnchorPane implements Initializable {
         }
         userInputWord.setDisable(true);
         QuizNextBtn.setDisable(false);
+        QuizNextBtn.setVisible(true);
 
         if (questionCount == 10) {
             QuizNextBtn.setDisable(true);

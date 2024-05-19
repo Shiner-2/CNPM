@@ -3,7 +3,9 @@ package com.example.hhd.Games.Hangman;
 import com.example.hhd.App;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.AppController;
+import com.example.hhd.Database.GameManagement;
 import com.example.hhd.Games.GamesController;
+import com.example.hhd.PublicValue;
 import com.example.hhd.SideBar.SideBar;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -73,6 +75,8 @@ public class HangmanController extends AnchorPane implements Initializable {
 
     private ArrayList<Node> failure = new ArrayList<>();
     private String GuessedLetter = "";
+
+    String[] getUserData = GameManagement.getUserGame(Integer.parseInt(PublicValue.user[0]),1);
 
     public HangmanController() throws IOException {
         HiddenWord = data.randomWord(10).getWord();
@@ -165,7 +169,10 @@ public class HangmanController extends AnchorPane implements Initializable {
         }
 
         HangmanFailCountLabel.setText("You have failed 0/8");
-
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,"",hs,tw);
     }
 
     public void showInfo(Event event) {
@@ -246,6 +253,19 @@ public class HangmanController extends AnchorPane implements Initializable {
         winning.setTitle("You win");
         winning.setContentText("GG Well Played");
         winning.show();
+
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]) + 1;
+        if(tw == 1) {
+            hs = wrongcnt + 1;
+        } else{
+            hs = Math.min(hs,(wrongcnt+1));
+        }
+        getUserData[2] = String.valueOf(hs);
+        getUserData[3] = String.valueOf(tw);
+        GameManagement.updateUserGame(id,"",hs,tw);
+
         CloseGame();
     }
 
@@ -297,7 +317,6 @@ public class HangmanController extends AnchorPane implements Initializable {
 
         HangmanToData();
     }
-
     /*
         HiddenWord
         GuessedLetter
@@ -307,12 +326,25 @@ public class HangmanController extends AnchorPane implements Initializable {
         String s = "";
         s = s + HiddenWord + "\n";
         s = s + GuessedLetter;
+        int id = Integer.parseInt(getUserData[0]);
+        int hs = Integer.parseInt(getUserData[2]);
+        int tw = Integer.parseInt(getUserData[3]);
+        GameManagement.updateUserGame(id,s,hs,tw);
 //        System.out.println(s);
+
     }
 
     public void loadData() {
         // TODO: getData
-        String s = "ABCDEEDCBA\n" + "BHKIL";
+        if(getUserData == null) {
+            Replay();
+            return;
+        }
+        String s = getUserData[1];
+        if(s.length() < 2) {
+            Replay();
+            return;
+        }
         String[] dat = s.split("\n");
         String tmp;
         if (dat[0].length()<10) {

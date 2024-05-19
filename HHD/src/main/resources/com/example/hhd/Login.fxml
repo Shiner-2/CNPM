@@ -6,6 +6,8 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
@@ -54,14 +56,9 @@
          </cursor>
       </CheckBox>
       <Line endX="200.0" layoutX="514.0" layoutY="551.0" startX="-200.0" />
-      <Label layoutX="482.0" layoutY="92.0" text="Logo">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER" layoutX="363.0" layoutY="484.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
+      <HBox alignment="CENTER" layoutX="363.0" layoutY="484.0" onMouseClicked="#onLoginClick" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
          <children>
-            <Label onMouseClicked="#onLoginClick" style="-fx-background-color: transparent;" text="Log in" textFill="#f7f7f7">
+            <Label style="-fx-background-color: transparent;" text="Log in" textFill="#f7f7f7">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -71,7 +68,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <HBox alignment="CENTER" layoutX="363.0" layoutY="578.0" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
+      <HBox alignment="CENTER" layoutX="363.0" layoutY="578.0" onMouseClicked="#onSignUpBtnClick" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 30;" stylesheets="@../../../CSS/Login.css">
          <children>
             <Label style="-fx-background-color: transparent;" text="Sign up" textFill="#f7f7f7">
                <font>
@@ -94,5 +91,10 @@
             <Font size="24.0" />
          </font>
       </TextField>
+      <ImageView fitHeight="89.0" fitWidth="317.0" layoutX="361.0" layoutY="80.0">
+         <image>
+            <Image url="@../../../img/Home/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

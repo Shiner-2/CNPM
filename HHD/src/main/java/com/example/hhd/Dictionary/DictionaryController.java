@@ -13,11 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,6 +31,14 @@ public class DictionaryController extends AnchorPane {
 
     @FXML
     private Button AddWordBtn;
+
+    @FXML
+    private ImageView LFlag;
+
+    private FileInputStream fileInputStream = new FileInputStream("HHD/src/main/resources/img/uk.png");
+    private Image uk = new Image(fileInputStream,60,30,false,false);
+    private FileInputStream fileInputStream1 = new FileInputStream("HHD/src/main/resources/img/vn.png");
+    private Image vn = new Image(fileInputStream1,60,30,false,false);
 
     Dictionary data = AppController.data;
 
@@ -58,7 +69,7 @@ public class DictionaryController extends AnchorPane {
 
     public static String curString = "";
 
-    public DictionaryController() {
+    public DictionaryController() throws FileNotFoundException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(
                 "Dictionary/Dictionary.fxml"));
         fxmlLoader.setRoot(this);
@@ -74,11 +85,13 @@ public class DictionaryController extends AnchorPane {
     private void onSwitch() {
         mode ^= 1;
         if (mode == Dictionary.EN_VI) {
+            LFlag.setImage(uk);
             data = dataEN_VI;
             wordDefinition.getChildren().clear();
             userInputWord.setText("");
             recommendWord.getItems().clear();
         } else {
+            LFlag.setImage(vn);
             data = dataVI_EN;
             wordDefinition.getChildren().clear();
             userInputWord.setText("");
@@ -128,7 +141,11 @@ public class DictionaryController extends AnchorPane {
     }
 
     public void speak(Event event) {
-        TTS.playSoundGoogleTranslateEnToVi(currentWord.getWord());
+        if (mode == Dictionary.EN_VI) {
+            TTS.playSoundGoogleTranslateEnToVi(currentWord.getWord());
+        } else {
+            TTS.playSoundGoogleTranslateViToEn(currentWord.getWord());
+        }
     }
 
     private void showWord(String word) {

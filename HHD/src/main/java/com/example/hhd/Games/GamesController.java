@@ -27,12 +27,11 @@ public class GamesController extends AnchorPane {
     @FXML
     private ImageView gamesBackBtn;
 
-    private WordleController wordle = new WordleController();
-    private ScrabbleController scrabble = new ScrabbleController();
-    private QuizGameController quiz = new QuizGameController();
-    private HangmanController hangman = new HangmanController();
-
-    private WordPictureController wordpicture = new WordPictureController();
+    private WordleController wordle;
+    private ScrabbleController scrabble;
+    private QuizGameController quiz;
+    private HangmanController hangman;
+    private WordPictureController wordpicture;
 
     public GamesController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games/Games.fxml"));
@@ -168,28 +167,43 @@ public class GamesController extends AnchorPane {
         });
     }
 
-    public void LoadWordle(Event event) {
+    public void LoadWordle(Event event) throws IOException {
+        if(wordle == null) {
+            wordle = new WordleController();
+        }
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(wordle);
         wordle.onLoad();
     }
 
     public void LoadQuiz(Event event) throws IOException {
+        if(quiz == null) {
+            quiz = new QuizGameController();
+        }
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(quiz);
     }
 
     public void LoadScrabble(Event event) throws IOException {
+        if(scrabble == null) {
+            scrabble = new ScrabbleController();
+        }
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(scrabble);
     }
 
     public void LoadHangman(Event event) throws IOException {
+        if(hangman == null) {
+            hangman = new HangmanController();
+        }
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(hangman);
     }
 
     public void LoadWordPicture(Event event) throws IOException {
+        if(wordpicture == null) {
+            wordpicture = new WordPictureController();
+        }
         AppController.mainscreen.getChildren().clear();
         AppController.mainscreen.getChildren().add(wordpicture);
     }

@@ -85,7 +85,7 @@ public class WordleWordController extends VBox implements Initializable {
                 }
             }
         }
-
+        WordleController.WordleToData();
         if (cnt == 5) {
             WordleController.EndGame(true);
         }

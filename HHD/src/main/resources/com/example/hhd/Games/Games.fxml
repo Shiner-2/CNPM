@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<fx:root fx:id="GamesScreen" prefHeight="700.0" prefWidth="1020.0" stylesheets="@../../../../CSS/Games.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="GamesScreen" prefHeight="700.0" prefWidth="1020.0" stylesheets="@../../../../CSS/Games.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="31.0" opacity="0.8" text="GAMES">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="29.0" opacity="0.8" text="GAMES">
          <font>
-            <Font name="Comic Sans MS Bold" size="50.0" />
+            <Font name="Comic Sans MS Bold" size="64.0" />
          </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -31,168 +34,30 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <VBox fx:id="GamesWordleBtn" alignment="CENTER" layoutX="168.0" layoutY="121.0" onMouseClicked="#LoadWordle" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      <AnchorPane layoutX="158.0" layoutY="131.0" onMouseClicked="#LoadWordle" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d8db9e; -fx-background-radius: 20;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="150.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0">
                <image>
                   <Image url="@../../../../img/Wordle-Logo.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-padding: 10;" text="Wordle" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </opaqueInsets>
-               <font>
-                  <Font name="FontAwesome" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.15933723747730255" green="0.21566016972064972" blue="0.6421052813529968" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8631578683853149" green="0.22378167510032654" blue="0.7672514915466309" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
-      <VBox fx:id="GamesHangmanBtn" alignment="CENTER" layoutX="693.0" layoutY="144.0" onMouseClicked="#LoadHangman" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="150.0">
-               <image>
-                  <Image url="@../../../../img/Hangman-logo.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-padding: 10;" text="Hangman" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </opaqueInsets>
-               <font>
-                  <Font name="FontAwesome" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.15933723747730255" green="0.21566016972064972" blue="0.6421052813529968" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8631578683853149" green="0.22378167510032654" blue="0.7672514915466309" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
-      <VBox fx:id="GamesScrabbleBtn" alignment="CENTER" layoutX="693.0" layoutY="394.0" onMouseClicked="#LoadScrabble" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="150.0">
-               <image>
-                  <Image url="@../../../../img/Scrabble-Logo.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-padding: 10;" text="Scrabble" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </opaqueInsets>
-               <font>
-                  <Font name="FontAwesome" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.15933723747730255" green="0.21566016972064972" blue="0.6421052813529968" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8631578683853149" green="0.22378167510032654" blue="0.7672514915466309" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
-      <VBox fx:id="GamesQuizBtn" alignment="CENTER" layoutX="168.0" layoutY="386.0" onMouseClicked="#LoadQuiz" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="150.0">
-               <image>
-                  <Image url="@../../../../img/QuizGame.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-padding: 10;" text="Quiz" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </opaqueInsets>
-               <font>
-                  <Font name="FontAwesome" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.15933723747730255" green="0.21566016972064972" blue="0.6421052813529968" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8631578683853149" green="0.22378167510032654" blue="0.7672514915466309" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
+            <HBox alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Wordle">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
-      <VBox fx:id="GamesQuizBtn1" alignment="CENTER" layoutX="430.0" layoutY="267.0" onMouseClicked="#LoadWordPicture" prefHeight="120.0" prefWidth="150.0" style="-fx-background-color: #def059; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: linear-gradient(to left, #e3470e, #e3ce0e); -fx-border-width: 5;">
+      </AnchorPane>
+      <AnchorPane layoutX="693.0" layoutY="127.0" onMouseClicked="#LoadWordPicture" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d8db9e; -fx-background-radius: 20;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="150.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0">
                <image>
                   <Image url="@../../../../img/WordPicture-Logo.png" />
                </image>
@@ -200,37 +65,79 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-padding: 10;" text="WordPicture" textAlignment="CENTER">
-               <opaqueInsets>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </opaqueInsets>
-               <font>
-                  <Font name="FontAwesome" size="18.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.15933723747730255" green="0.21566016972064972" blue="0.6421052813529968" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8631578683853149" green="0.22378167510032654" blue="0.7672514915466309" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
+            <HBox alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Catch the Word">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </VBox>
+      </AnchorPane>
+      <AnchorPane layoutX="157.0" layoutY="441.0" onMouseClicked="#LoadQuiz" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d8db9e; -fx-background-radius: 20;">
+         <children>
+            <HBox alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Quiz">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="150.0" fitWidth="200.0">
+               <image>
+                  <Image url="@../../../../img/QuizGame.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="691.0" layoutY="435.0" onMouseClicked="#LoadHangman" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d8db9e; -fx-background-radius: 20;">
+         <children>
+            <HBox alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Hangman">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="150.0" fitWidth="200.0">
+               <image>
+                  <Image url="@../../../../img/Hangman-logo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="423.0" layoutY="282.0" onMouseClicked="#LoadScrabble" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d8db9e; -fx-background-radius: 20;">
+         <children>
+            <HBox alignment="CENTER" layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Scrabble">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="150.0" fitWidth="200.0">
+               <image>
+                  <Image url="@../../../../img/Scrabble-Logo.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>
