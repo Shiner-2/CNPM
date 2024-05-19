@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <fx:root prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #d8db9e;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="90.0" fitWidth="400.0" layoutX="338.0" layoutY="34.0">
@@ -38,11 +37,21 @@
                </effect>
             </ListView>
             <Line endX="1.20001220703125" endY="308.6666259765625" layoutX="270.0" layoutY="121.0" startX="1.20001220703125" startY="9.466644287109375" />
-            <Label layoutX="125.0" layoutY="34.0" text="Recent Search">
+            <Label layoutX="125.0" layoutY="25.0" text="Recent Search">
                <font>
                   <Font name="Arial Black" size="36.0" />
                </font>
             </Label>
+            <ImageView fitHeight="30.0" fitWidth="60.0" layoutX="385.0" layoutY="88.0">
+               <image>
+                  <Image url="@../../../img/vn.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="60.0" layoutX="105.0" layoutY="88.0">
+               <image>
+                  <Image url="@../../../img/uk.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <HBox alignment="CENTER" layoutX="692.0" layoutY="148.0" prefHeight="200.0" prefWidth="265.0" style="-fx-background-color: pink; -fx-background-radius: 30;">

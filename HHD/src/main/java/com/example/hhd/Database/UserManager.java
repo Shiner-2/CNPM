@@ -117,7 +117,7 @@ public class UserManager {
      * @param newDisplayName new display name to set
      * @return true if the profile is updated successfully, false otherwise
      */
-    public static boolean updateProfile(String username, String newValue, String colName) {
+    public static boolean S(String username, String newValue, String colName) {
         String sql = "UPDATE UserProfiles SET " + colName + " = ? WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)";
         try (Connection conn = DBHelper.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

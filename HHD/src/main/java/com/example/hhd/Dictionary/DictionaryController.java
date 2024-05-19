@@ -4,6 +4,7 @@ import com.example.hhd.*;
 import com.example.hhd.Algo.Dictionary;
 import com.example.hhd.Algo.TrieDictionary;
 import com.example.hhd.Algo.Word;
+import com.example.hhd.SideBar.SideBar;
 import com.example.hhd.TTS.TTS;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -13,11 +14,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -45,11 +49,18 @@ public class DictionaryController extends AnchorPane {
     @FXML
     private TextFlow wordDefinition;
 
+    @FXML
+    private ImageView LFlag;
+    FileInputStream fileInputStream = new FileInputStream("HHD/src/main/resources/img/uk.png");
+    FileInputStream fileInputStream1 = new FileInputStream("HHD/src/main/resources/img/vn.png");
+    private Image uk = new Image(fileInputStream,60,30,false,false);
+    private Image vn = new Image(fileInputStream1,60,30,false,false);
+
     private Word currentWord;
 
     public static String curString = "";
 
-    public DictionaryController() {
+    public DictionaryController() throws FileNotFoundException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(
                 "Dictionary/Dictionary.fxml"));
         fxmlLoader.setRoot(this);
@@ -65,11 +76,15 @@ public class DictionaryController extends AnchorPane {
     private void onSwitch() {
         mode ^= 1;
         if (mode == Dictionary.EN_VI) {
+            LFlag.setImage(uk);
+
             data = dataEN_VI;
             wordDefinition.getChildren().clear();
             userInputWord.setText("");
             recommendWord.getItems().clear();
         } else {
+            LFlag.setImage(vn);
+
             data = dataVI_EN;
             wordDefinition.getChildren().clear();
             userInputWord.setText("");
@@ -124,22 +139,16 @@ public class DictionaryController extends AnchorPane {
         });
     }
 
-    // TODO: change this
-    public void LoadApp(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("App.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-
-        AppController.home.updateRecentWord();
-
-        stage.setTitle("HHD");
-        stage.setScene(scene);
-        stage.show();
+    public void LoadApp(){
+        SideBar.loadHome();
     }
 
     public void speak(Event event) {
-        TTS.playSoundGoogleTranslateEnToVi(currentWord.getWord());
+        if (mode == Dictionary.EN_VI) {
+            TTS.playSoundGoogleTranslateEnToVi(currentWord.getWord());
+        } else {
+            TTS.playSoundGoogleTranslateViToEn(currentWord.getWord());
+        }
     }
 
     private void showWord(String word) {

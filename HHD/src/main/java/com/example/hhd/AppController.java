@@ -50,7 +50,11 @@ public class AppController implements Initializable {
     public static DictionaryController dictionary;
 
     static {
-       dictionary = new DictionaryController();
+        try {
+            dictionary = new DictionaryController();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static GamesController games;

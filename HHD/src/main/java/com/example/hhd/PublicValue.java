@@ -11,9 +11,9 @@ import java.io.IOException;
 public class PublicValue {
     public static String username;
     /*
-    userID
-    username
-    password
+        displayName
+        VI-EN
+        EN-VI
      */
     public static String[] profile;
 
