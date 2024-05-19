@@ -5,16 +5,16 @@
 
 ## Persona for Children
 
-**Name:** Thang
+**Name:** Nhung
 
 **Age:** 6 years old
 
 **Grade:** Kindergarten
 
 **Background:**
-- Thang is a curious and active child who loves to explore and learn new things.
+- Nhung is a curious and active child who loves to explore and learn new things.
 - She attends kindergarten where she is starting to learn the basics of reading and writing.
-- Thang enjoys playing games on her tablet, especially those that involve colorful graphics and interactive elements.
+- Nhung enjoys playing games on her tablet, especially those that involve colorful graphics and interactive elements.
 
 **Goals:**
 - Learn new English words and improve her vocabulary.
@@ -49,17 +49,17 @@
 **Occupation:** Marketing Manager
 
 **Background:**
-- Phuong is a working mother with a busy schedule but is very involved in her daughter Thang's education.
+- Phuong is a working mother with a busy schedule but is very involved in her daughter Nhung's education.
 - She values educational tools that can supplement her daughter's learning outside of school.
-- Phuong is tech-savvy and often searches for the best apps and resources to support Thang's development.
+- Phuong is tech-savvy and often searches for the best apps and resources to support Nhung's development.
 
 **Goals:**
-- Ensure Thang is developing a strong foundation in English vocabulary and literacy skills.
+- Ensure Nhung is developing a strong foundation in English vocabulary and literacy skills.
 - Find educational tools that are both effective and engaging for her daughter.
-- Monitor Thang's progress and see tangible results from the educational apps and games she uses.
+- Monitor Nhung's progress and see tangible results from the educational apps and games she uses.
 
 **Frustrations:**
-- Difficulty finding high-quality, age-appropriate educational apps that keep Thang engaged.
+- Difficulty finding high-quality, age-appropriate educational apps that keep Nhung engaged.
 - Concerned about screen time and wants to ensure that the time spent on devices is productive.
 - Wants an educational tool that provides clear feedback and progress tracking.
 
@@ -71,10 +71,10 @@
 **Priorities:**
 - Educational value and alignment with school curriculum.
 - Safe and ad-free environment for her daughter.
-- Features that allow her to track Thang's progress and identify areas for improvement.
+- Features that allow her to track Nhung's progress and identify areas for improvement.
 
 **Parenting Style:**
-- Supportive and proactive in Thang's education.
+- Supportive and proactive in Nhung's education.
 - Encourages learning through play and interactive activities.
 - Values a balanced approach to technology, ensuring it's used as a tool for learning rather than just entertainment.
 
