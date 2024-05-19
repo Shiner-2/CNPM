@@ -113,7 +113,7 @@ public class WordleController extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NewGame();
+        LoadData();
 
         GamesController.setHoverEffect(imgV1,imgV2,imgV3);
 
@@ -131,4 +131,51 @@ public class WordleController extends AnchorPane implements Initializable {
         }
 
     }
+
+    /*
+        Board 6 line
+        HiddenWord
+     */
+    public static void WordleToData() {
+        // TODO: loadData
+        String s = "";
+        for(int i = 0; i < 6; i++) {
+            s = s + board.get(i).getCur() + "\n";
+        }
+        s = s + HiddenWord + "\n";
+        //System.out.println(s);
+    }
+
+    public void LoadData() {
+        // TODO: getData
+        String s = "hello\n" +
+                "happy\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "dense";
+        String[] dat = s.split("\n");
+        board.clear();
+        WordleContainer.getChildren().clear();
+        HiddenWord = dat[6];
+        GameState = false;
+        for(int i = 0; i < 6; i++) {
+            WordleWordController Word = new WordleWordController();
+            Word.setHiddenWord(HiddenWord);
+            board.add(Word);
+            WordleContainer.getChildren().add(Word);
+        }
+
+        for(int i = 0; i < 6 ; i++) {
+            if(dat[i].length() == 5) {
+                board.get(i).setCur(dat[i]);
+                board.get(i).checkWord();
+                WordleController.nextWord();
+            }
+        }
+
+        onLoad();
+    }
+
 }
